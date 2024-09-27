@@ -8,7 +8,7 @@ package computerproducers;
  *
  * @author davidmizrahi
  */
-public abstract class Producer extends Thread{
+public abstract class Producer extends Thread {
     
     protected static int store_counter;
     public int salary_per_hour;

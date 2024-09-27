@@ -24,6 +24,34 @@ public class PlaqueProducer extends Producer {
         super(salary, time_sleep);
         
     }
+
+    public static int getStore_counter() {
+        return store_counter;
+    }
+
+    public static void setStore_counter(int store_counter) {
+        Producer.store_counter = store_counter;
+    }
+
+    public int getSalary_per_hour() {
+        return salary_per_hour;
+    }
+
+    public void setSalary_per_hour(int salary_per_hour) {
+        this.salary_per_hour = salary_per_hour;
+    }
+
+    public int getTime_sleep() {
+        return time_sleep;
+    }
+
+    public void setTime_sleep(int time_sleep) {
+        this.time_sleep = time_sleep;
+    }
+
+    public static Semaphore getSemaphore() {
+        return semaphore;
+    }
     
     @Override
       public void incrementCounter(){

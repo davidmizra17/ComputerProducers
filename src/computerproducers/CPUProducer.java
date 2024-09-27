@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author davidmizrahi
  */
-public class CPUProducer extends Producer{
+public class CPUProducer extends Producer {
     
     public static final int STORE_CAPACITY = 20;
     
