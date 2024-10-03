@@ -24,7 +24,6 @@ public class RAMProducer extends Producer{
         }
     
     
-    
     public RAMProducer(int salary, int time_sleep){
         super(salary, time_sleep);
     }

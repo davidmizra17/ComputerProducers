@@ -4,6 +4,7 @@
  */
 package computerproducers;
 
+import static computerproducers.PowerSupplyProducer.STORE_CAPACITY;
 import static computerproducers.Producer.store_counter;
 import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
@@ -14,19 +15,46 @@ import java.util.logging.Logger;
  *
  * @author davidmizrahi
  */
-public class PowerSupplyProducer extends Producer {
+public class GraphicsCardProducer extends Producer {
     
-    public static final int STORE_CAPACITY = 35;
+    public static final int STORE_CAPACITY = 10;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
     
     static{
+        
         store_counter = 0;
+        
     }
     
     
-    public PowerSupplyProducer(int salary, int time_sleep){
+    public GraphicsCardProducer(int salary, int time_sleep){
         super(salary, time_sleep);
+       
+    }
+
+    public static int getStore_counter() {
+        return store_counter;
+    }
+
+    public static void setStore_counter(int store_counter) {
+        Producer.store_counter = store_counter;
+    }
+
+    public int getSalary_per_hour() {
+        return salary_per_hour;
+    }
+
+    public void setSalary_per_hour(int salary_per_hour) {
+        this.salary_per_hour = salary_per_hour;
+    }
+
+    public int getTime_sleep() {
+        return time_sleep;
+    }
+
+    public void setTime_sleep(int time_sleep) {
+        this.time_sleep = time_sleep;
     }
 
     public static Semaphore getSemaphore() {
@@ -34,7 +62,7 @@ public class PowerSupplyProducer extends Producer {
     }
 
     public static void setSemaphore(Semaphore semaphore) {
-        PowerSupplyProducer.semaphore = semaphore;
+        GraphicsCardProducer.semaphore = semaphore;
     }
 
     public static boolean isRunning() {
@@ -42,37 +70,13 @@ public class PowerSupplyProducer extends Producer {
     }
 
     public static void setRunning(boolean running) {
-        PowerSupplyProducer.running = running;
-    }
-
-    public static int getStore_counter() {
-        return store_counter;
-    }
-
-    public int getSalary_per_hour() {
-        return salary_per_hour;
-    }
-
-    public int getTime_sleep() {
-        return time_sleep;
-    }
-
-    public static void setStore_counter(int store_counter) {
-        Producer.store_counter = store_counter;
-    }
-
-    public void setSalary_per_hour(int salary_per_hour) {
-        this.salary_per_hour = salary_per_hour;
-    }
-
-    public void setTime_sleep(int time_sleep) {
-        this.time_sleep = time_sleep;
+        GraphicsCardProducer.running = running;
     }
     
     
     
     @Override
-     public synchronized void incrementCounter(){
+    public synchronized void incrementCounter(){
         try {
             semaphore.acquire();
             if(store_counter < STORE_CAPACITY){
@@ -92,7 +96,7 @@ public class PowerSupplyProducer extends Producer {
     }
       
     @Override
-    public void run(){
+     public void run(){
         
         System.out.println("hello from thread" + Thread.currentThread().getName());
         
@@ -108,5 +112,4 @@ public class PowerSupplyProducer extends Producer {
             }
         
     }
-    
 }

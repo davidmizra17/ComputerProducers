@@ -4,6 +4,8 @@
  */
 package computerproducers;
 
+import static computerproducers.Producer.store_counter;
+import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +16,13 @@ import java.util.logging.Logger;
  */
 public class PlaqueProducer extends Producer {
     public static final int STORE_CAPACITY = 25;
+    private static Semaphore semaphore = new Semaphore(1);
+    private static volatile boolean running = true;
     
     static{
         store_counter = 0;
     }
     
-    private static final Semaphore semaphore = new Semaphore(1);
     public PlaqueProducer(int salary, int time_sleep){
         super(salary, time_sleep);
         
@@ -53,31 +56,42 @@ public class PlaqueProducer extends Producer {
         return semaphore;
     }
     
+    
     @Override
-      public void incrementCounter(){
+      public synchronized void incrementCounter(){
         try {
             semaphore.acquire();
-            System.out.println(Thread.currentThread().getName() + "is working...");
+            if(store_counter < STORE_CAPACITY){
+                Thread.sleep(time_sleep);
+                store_counter++;
+                System.out.println(Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+            }else{
+                running = false;
+            }
             
-            Thread.sleep(time_sleep);
-            store_counter++;
-            semaphore.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(RAMProducer.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            semaphore.release();
         }
         
     }
       
     @Override
     public void run(){
+        
         System.out.println("hello from thread" + Thread.currentThread().getName());
-       while(store_counter < STORE_CAPACITY) {
-        incrementCounter(); // increment with Semaphore control
-        if(store_counter == STORE_CAPACITY){
-            System.out.println(Thread.currentThread().getName() + "Reached capacity.");
-            break; // exit when full
+        
+        while(running) {
+            incrementCounter();
+            Thread.yield();// increment with Semaphore control
+            
         }
-    }
+        
+        if(store_counter == STORE_CAPACITY){
+                System.out.println(Thread.currentThread().getName() + " Reached capacity.");
+                
+            }
         
     }
     

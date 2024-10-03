@@ -4,7 +4,7 @@
  */
 package computerproducers;
 
-import static java.lang.Thread.MAX_PRIORITY;
+
 
 /**
  *
