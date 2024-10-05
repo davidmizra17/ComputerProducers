@@ -36,7 +36,7 @@ public class ComputerProducers {
 //            RAMProducer rp_33 = new RAMProducer(40, 1000);
 //            RAMProducer rp_43 = new RAMProducer(40, 1000);
             
-            Assembler assembler = new Assembler(45, 600);
+//            Assembler assembler = new Assembler(45, 600);
             
             
             
@@ -47,7 +47,7 @@ public class ComputerProducers {
             rp_5.start();
             rp_6.start();
             rp_7.start();
-            assembler.start();
+//            assembler.start();
             rp_8.start();
 //            rp_9.start();
 //            rp_12.start();
