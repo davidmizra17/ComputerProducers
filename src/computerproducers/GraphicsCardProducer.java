@@ -4,9 +4,6 @@
  */
 package computerproducers;
 
-import static computerproducers.PowerSupplyProducer.STORE_CAPACITY;
-import static computerproducers.Producer.store_counter;
-import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,13 +17,8 @@ public class GraphicsCardProducer extends Producer {
     public static final int STORE_CAPACITY = 10;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
-    
-    static{
-        
-        store_counter = 0;
-        
-    }
-    
+  
+    public static int store_counter;
     
     public GraphicsCardProducer(int salary, int time_sleep){
         super(salary, time_sleep);
@@ -38,7 +30,7 @@ public class GraphicsCardProducer extends Producer {
     }
 
     public static void setStore_counter(int store_counter) {
-        Producer.store_counter = store_counter;
+        GraphicsCardProducer.store_counter = store_counter;
     }
 
     public int getSalary_per_hour() {
@@ -82,7 +74,7 @@ public class GraphicsCardProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
-                System.out.println(Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+                System.out.println("Graphics Card Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;
             }
@@ -107,7 +99,7 @@ public class GraphicsCardProducer extends Producer {
         }
         
         if(store_counter == STORE_CAPACITY){
-                System.out.println(Thread.currentThread().getName() + " Reached capacity.");
+                System.out.println("Graphics Card store limit reached by thread: " + Thread.currentThread().getName());
                 
             }
         

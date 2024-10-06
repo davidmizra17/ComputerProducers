@@ -10,7 +10,6 @@ package computerproducers;
  */
 public abstract class Producer extends Thread {
     
-    protected static int store_counter;
     public int salary_per_hour;
     public int time_sleep;
     

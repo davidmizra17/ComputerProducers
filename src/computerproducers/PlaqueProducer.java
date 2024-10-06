@@ -4,7 +4,6 @@
  */
 package computerproducers;
 
-import static computerproducers.Producer.store_counter;
 import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -19,9 +18,7 @@ public class PlaqueProducer extends Producer {
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
     
-    static{
-        store_counter = 0;
-    }
+    public static int store_counter;
     
     public PlaqueProducer(int salary, int time_sleep){
         super(salary, time_sleep);
@@ -32,8 +29,16 @@ public class PlaqueProducer extends Producer {
         return store_counter;
     }
 
+    public static void setSemaphore(Semaphore semaphore) {
+        PlaqueProducer.semaphore = semaphore;
+    }
+
+    public static void setRunning(boolean running) {
+        PlaqueProducer.running = running;
+    }
+
     public static void setStore_counter(int store_counter) {
-        Producer.store_counter = store_counter;
+        PlaqueProducer.store_counter = store_counter;
     }
 
     public int getSalary_per_hour() {
@@ -64,7 +69,7 @@ public class PlaqueProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
-                System.out.println(Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+                System.out.println("Plaques Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;
             }
@@ -89,7 +94,7 @@ public class PlaqueProducer extends Producer {
         }
         
         if(store_counter == STORE_CAPACITY){
-                System.out.println(Thread.currentThread().getName() + " Reached capacity.");
+                System.out.println("Plaque Producer store limit reached by thread: " + Thread.currentThread().getName());
                 
             }
         

@@ -19,9 +19,7 @@ public class RAMProducer extends Producer{
     private static volatile boolean running = true;
     
     
-    static{
-            store_counter = 0;
-        }
+    public static int store_counter;
     
     
     public RAMProducer(int salary, int time_sleep){
@@ -66,7 +64,7 @@ public class RAMProducer extends Producer{
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
-                System.out.println(Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+                System.out.println("RAM Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;
             }
@@ -91,7 +89,7 @@ public class RAMProducer extends Producer{
         }
         
         if(store_counter == STORE_CAPACITY){
-                System.out.println(Thread.currentThread().getName() + " Reached capacity.");
+                System.out.println("RAM store limit reached by thread: " + Thread.currentThread().getName());
                 
             }
         

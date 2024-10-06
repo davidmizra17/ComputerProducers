@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/ProjectManager.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/Assembler.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/PlaqueProducer.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/CPUProducer.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/PowerSupplyProducer.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/Producer.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/GraphicsCardProducer.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/RAMProducer.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/ComputerProducers.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/ComputerProducers/src/computerproducers/GUI.java</file>
         </group>
     </open-files>
 </project-private>

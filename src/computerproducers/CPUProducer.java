@@ -5,7 +5,6 @@
 package computerproducers;
 
 import static computerproducers.GraphicsCardProducer.STORE_CAPACITY;
-import static computerproducers.Producer.store_counter;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,10 +19,7 @@ public class CPUProducer extends Producer {
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
     
-    static{
-        store_counter = 0;
-    }
-    
+    public static int store_counter;
     
     public CPUProducer(int salary, int time_sleep){
         super(salary, time_sleep);
@@ -34,9 +30,19 @@ public class CPUProducer extends Producer {
         return store_counter;
     }
 
-    public static void setStore_counter(int store_counter) {
-        Producer.store_counter = store_counter;
+    public static void setSemaphore(Semaphore semaphore) {
+        CPUProducer.semaphore = semaphore;
     }
+
+    public static void setRunning(boolean running) {
+        CPUProducer.running = running;
+    }
+
+    public static void setStore_counter(int store_counter) {
+        CPUProducer.store_counter = store_counter;
+    }
+    
+    
 
     public int getSalary_per_hour() {
         return salary_per_hour;
@@ -66,7 +72,7 @@ public class CPUProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
-                System.out.println(Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+                System.out.println("CPU Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;
             }
@@ -91,7 +97,7 @@ public class CPUProducer extends Producer {
         }
         
         if(store_counter == STORE_CAPACITY){
-                System.out.println(Thread.currentThread().getName() + " Reached capacity.");
+                System.out.println("CPU Store limit reached by thread: " + Thread.currentThread().getName());
                 
             }
         

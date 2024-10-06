@@ -5,6 +5,8 @@
  */
 package computerproducers;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juanm
@@ -28,8 +30,8 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        startSimulation = new javax.swing.JButton();
+        resetValues = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -118,21 +120,21 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setText("PRODUCTORES DE COMPUTADORAS");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, 30));
 
-        jButton1.setText("INICIAR SIMULACIÓN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        startSimulation.setText("INICIAR SIMULACIÓN");
+        startSimulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                startSimulationActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+        getContentPane().add(startSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
-        jButton2.setText("Colocar nuevos valores");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        resetValues.setText("Colocar nuevos valores");
+        resetValues.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                resetValuesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        getContentPane().add(resetValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
         jLabel2.setText("DELL");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 100, 20));
@@ -574,13 +576,108 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void startSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimulationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        //REVISAR LA ASIGNACION DE LOS TIEMPOS DE SLEEP PARA CADA HILO
+        initializeDELLWorkers();
+        initializeHPWorkers();
+        
+    }//GEN-LAST:event_startSimulationActionPerformed
+    
+    private void initializeDELLWorkers(){
+        try {
+        // Try to parse the input as a double or integer
+        int amount_of_plaque_producers = Integer.parseInt(PlaqueProducerDell.getText());
+        int amount_of_graphicCard_producers = Integer.parseInt(GraphicsCardProducerDell.getText());
+        int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerDell.getText());
+        int amount_of_ram_producers = Integer.parseInt(RAMProducerDell.getText());
+        int amount_of_cpu_producers = Integer.parseInt(CPUProducerDell.getText());
+        
+        if (amount_of_plaque_producers > 0) {
+            for (int i = 0; i < amount_of_plaque_producers; i++) {
+                PlaqueProducer worker = new PlaqueProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_graphicCard_producers; i++) {
+                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_powerSupply_producers; i++) {
+                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_ram_producers; i++) {
+                RAMProducer worker = new RAMProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_cpu_producers; i++) {
+                CPUProducer worker = new CPUProducer(25, 500);
+                worker.start();
+            }
+            
+         }else{
+            JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
+        }
+        
+         // If it parses without throwing an exception, it's numeric
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores debe ser un número entero."); 
+    }
+    }
+    
+    private void initializeHPWorkers(){
+        try {
+        // Try to parse the input as a double or integer
+        int amount_of_plaque_producers = Integer.parseInt(PlaqueProducerHP.getText());
+        int amount_of_graphicCard_producers = Integer.parseInt(GraphicsCardProducerHP.getText());
+        int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerHP.getText());
+        int amount_of_ram_producers = Integer.parseInt(RAMProducerHP.getText());
+        int amount_of_cpu_producers = Integer.parseInt(CPUProducerHP.getText());
+        
+        if (amount_of_plaque_producers > 0) {
+            for (int i = 0; i < amount_of_plaque_producers; i++) {
+                PlaqueProducer worker = new PlaqueProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_graphicCard_producers; i++) {
+                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_powerSupply_producers; i++) {
+                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_ram_producers; i++) {
+                RAMProducer worker = new RAMProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_cpu_producers; i++) {
+                CPUProducer worker = new CPUProducer(25, 500);
+                worker.start();
+            }
+            
+         }else{
+            JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
+        }
+        
+         // If it parses without throwing an exception, it's numeric
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores debe ser un número entero."); 
+    }
+    }
+    
+    private void resetValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetValuesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_resetValuesActionPerformed
 
     private void CPUProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUProducerDellActionPerformed
         // TODO add your handling code here:
@@ -823,8 +920,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField RAMProducerHP;
     private javax.swing.JTextField StandardReadyDell;
     private javax.swing.JTextField StandardReadyHP;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -866,5 +961,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton resetValues;
+    private javax.swing.JButton startSimulation;
     // End of variables declaration//GEN-END:variables
 }
