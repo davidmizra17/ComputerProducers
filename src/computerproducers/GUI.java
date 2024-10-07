@@ -16,6 +16,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    private static final int MAX_AMOUNT = 18;
     public GUI() {
         initComponents();
     }
@@ -593,8 +594,11 @@ public class GUI extends javax.swing.JFrame {
         int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerDell.getText());
         int amount_of_ram_producers = Integer.parseInt(RAMProducerDell.getText());
         int amount_of_cpu_producers = Integer.parseInt(CPUProducerDell.getText());
+        int amount_of_assemblers = Integer.parseInt(AssemblerDell.getText());
         
-        if (amount_of_plaque_producers > 0) {
+        int total_workers = amount_of_plaque_producers + amount_of_graphicCard_producers + amount_of_powerSupply_producers + amount_of_ram_producers + amount_of_cpu_producers;
+        
+        if (amount_of_plaque_producers > 0 && total_workers <= MAX_AMOUNT) {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
                 PlaqueProducer worker = new PlaqueProducer(25, 500);
                 worker.start();
@@ -620,9 +624,16 @@ public class GUI extends javax.swing.JFrame {
                 worker.start();
             }
             
-         }else{
+            for (int i = 0; i < amount_of_assemblers; i++) {
+                Assembler worker = new Assembler(50, 2000, 6, 5, 3, 1, 5, 3, 1);
+                worker.start();
+            }
+            
+         }else if (amount_of_plaque_producers <= 0){
             JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
-        }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores ingresados no debe exceder de 18."); 
+         }
         
          // If it parses without throwing an exception, it's numeric
     } catch (NumberFormatException e) {
@@ -638,6 +649,7 @@ public class GUI extends javax.swing.JFrame {
         int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerHP.getText());
         int amount_of_ram_producers = Integer.parseInt(RAMProducerHP.getText());
         int amount_of_cpu_producers = Integer.parseInt(CPUProducerHP.getText());
+        int amount_of_assemblers = Integer.parseInt(AssemblerHP.getText());
         
         if (amount_of_plaque_producers > 0) {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
@@ -662,6 +674,11 @@ public class GUI extends javax.swing.JFrame {
             
             for (int i = 0; i < amount_of_cpu_producers; i++) {
                 CPUProducer worker = new CPUProducer(25, 500);
+                worker.start();
+            }
+            
+            for (int i = 0; i < amount_of_assemblers; i++) {
+                Assembler worker = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3);
                 worker.start();
             }
             

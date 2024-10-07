@@ -214,20 +214,12 @@ public class Assembler extends Thread {
                     //reset values, assemble computers with graphics cards and start count for regular computers again
                     resetValues();
                     //ASSEMBLE COMPUTER WITH GRAPHICS CARD
+                    graphicCardComputerCounter+= graphicsComputerAssembly();
                     
             }
                 System.out.println("Assembler checking for available resources...");
 
-                if(RAMProducer.store_counter >= 8){
-                    
-                    
-                    
-                     if(ram_counter == 8){
-                        System.out.println(ram_counter + " RAM READY");
-                        break;
-                    }
-                    
-                }
+              
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
