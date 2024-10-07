@@ -20,7 +20,9 @@ public class ComputerProducers {
         
             
         GUI gui = new GUI();
+        gui.setResizable(true);
         gui.setVisible(true);
+        
             
             
         

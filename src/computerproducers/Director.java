@@ -10,7 +10,8 @@ package computerproducers;
  * @author juanm
  */
 public class Director extends Thread{
-    private int SalaryPerHour = 60;
+    
+    public static final int SALARY_PER_HOUR = 60;
     
     private int remainingDays;
     
@@ -34,10 +35,6 @@ public class Director extends Thread{
         
     }
 
-    public int getSalaryPerHour() {
-        return SalaryPerHour;
-    }
-
     public int getRemainingDays() {
         return remainingDays;
     }
@@ -52,10 +49,6 @@ public class Director extends Thread{
 
     public ProjectManager getPm() {
         return pm;
-    }
-
-    public void setSalaryPerHour(int SalaryPerHour) {
-        this.SalaryPerHour = SalaryPerHour;
     }
 
     public void setRemainingDays(int remainingDays) {
