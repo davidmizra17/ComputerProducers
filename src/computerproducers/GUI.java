@@ -5,6 +5,8 @@
  */
 package computerproducers;
 
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,42 +41,20 @@ public class GUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        CPUProducerDell = new javax.swing.JTextField();
-        RAMProducerDell = new javax.swing.JTextField();
-        PowerSupplyProducerDell = new javax.swing.JTextField();
-        GraphicsCardProducerDell = new javax.swing.JTextField();
-        PlaqueProducerDell = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        CPUProducerHP = new javax.swing.JTextField();
-        RAMProducerHP = new javax.swing.JTextField();
-        PowerSupplyProducerHP = new javax.swing.JTextField();
-        GraphicsCardProducerHP = new javax.swing.JTextField();
-        PlaqueProducerHP = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        AssemblerDell = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        AssemblerHP = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        CPUCapacityHP = new javax.swing.JTextField();
-        RAMCapacityHP = new javax.swing.JTextField();
-        PowerSupplyCapacityHP = new javax.swing.JTextField();
-        GraphicsCardCapacityHP = new javax.swing.JTextField();
-        PlaqueCapacityHP = new javax.swing.JTextField();
-        CPUHP = new javax.swing.JTextField();
-        RAMHP = new javax.swing.JTextField();
-        PowerSupplyHP = new javax.swing.JTextField();
-        GraphicsCardHP = new javax.swing.JTextField();
-        PlaqueHP = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -83,37 +63,59 @@ public class GUI extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        CPUCapacityDell = new javax.swing.JTextField();
-        RAMCapacityDell = new javax.swing.JTextField();
-        PowerSupplyCapacityDell = new javax.swing.JTextField();
-        GraphicsCardCapacityDell = new javax.swing.JTextField();
-        PlaqueCapacityDell = new javax.swing.JTextField();
-        CPUDell = new javax.swing.JTextField();
-        RAMDell = new javax.swing.JTextField();
-        PowerSupplyDell = new javax.swing.JTextField();
-        GraphicsCardDell = new javax.swing.JTextField();
-        PlaqueDell = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        StandardReadyHP = new javax.swing.JTextField();
-        DirectorActivity = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        StandardReadyDell = new javax.swing.JTextField();
-        GraphicsCardComputerReadyDell = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        PMActivity = new javax.swing.JTextField();
-        PMFaults = new javax.swing.JTextField();
-        PMDiscount = new javax.swing.JTextField();
-        GraphicsCardComputerReadyHP = new javax.swing.JTextField();
-        DaysLeft = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
+        PlaqueProducerDell = new javax.swing.JTextField();
+        RAMProducerDell = new javax.swing.JTextField();
+        PowerSupplyProducerDell = new javax.swing.JTextField();
+        GraphicsCardProducerDell = new javax.swing.JTextField();
+        AssemblerDell = new javax.swing.JTextField();
+        CPUProducerDell = new javax.swing.JTextField();
+        PlaqueProducerHP = new javax.swing.JTextField();
+        RAMProducerHP = new javax.swing.JTextField();
+        PowerSupplyProducerHP = new javax.swing.JTextField();
+        GraphicsCardProducerHP = new javax.swing.JTextField();
+        AssemblerHP = new javax.swing.JTextField();
+        CPUProducerHP = new javax.swing.JTextField();
+        PlaqueDell = new javax.swing.JTextField();
+        RAMDell = new javax.swing.JTextField();
+        PowerSupplyDell = new javax.swing.JTextField();
+        GraphicsCardDell = new javax.swing.JTextField();
+        CPUDell = new javax.swing.JTextField();
+        PlaqueCapacityDell = new javax.swing.JTextField();
+        RAMCapacityDell = new javax.swing.JTextField();
+        PowerSupplyCapacityDell = new javax.swing.JTextField();
+        GraphicsCardCapacityDell = new javax.swing.JTextField();
+        CPUCapacityDell = new javax.swing.JTextField();
+        PlaqueHP = new javax.swing.JTextField();
+        RAMHP = new javax.swing.JTextField();
+        PowerSupplyHP = new javax.swing.JTextField();
+        GraphicsCardHP = new javax.swing.JTextField();
+        CPUHP = new javax.swing.JTextField();
+        PlaqueCapacityHP = new javax.swing.JTextField();
+        RAMCapacityHP = new javax.swing.JTextField();
+        PowerSupplyCapacityHP = new javax.swing.JTextField();
+        GraphicsCardCapacityHP = new javax.swing.JTextField();
+        CPUCapacityHP = new javax.swing.JTextField();
+        StandardComputerReadyHP = new javax.swing.JTextField();
+        DaysLeft = new javax.swing.JTextField();
+        GraphicsCardComputerReadyHP = new javax.swing.JTextField();
+        StandardComputerReadyDell = new javax.swing.JTextField();
+        GraphicsCardComputerReadyDell = new javax.swing.JTextField();
+        DirectorActivity = new javax.swing.JTextField();
+        PMFaults = new javax.swing.JTextField();
+        PMDiscount = new javax.swing.JTextField();
+        PMActivity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,41 +162,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setText("FUENTE DE ALIMENTACIÓN");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, -1));
 
-        CPUProducerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUProducerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 30, -1));
-
-        RAMProducerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMProducerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 30, -1));
-
-        PowerSupplyProducerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyProducerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, -1));
-
-        GraphicsCardProducerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardProducerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 30, -1));
-
-        PlaqueProducerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueProducerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 30, -1));
-
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("TARJETAS GRÁFICAS");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 140, -1));
@@ -215,41 +182,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel17.setText("FUENTE DE ALIMENTACIÓN");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 140, -1));
 
-        CPUProducerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUProducerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 30, -1));
-
-        RAMProducerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMProducerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 30, -1));
-
-        PowerSupplyProducerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyProducerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 30, -1));
-
-        GraphicsCardProducerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardProducerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 30, -1));
-
-        PlaqueProducerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueProducerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 30, -1));
-
         jLabel8.setText("MAX");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 30, 20));
 
@@ -260,23 +192,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel10.setText("ENSAMBLADORES");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 140, -1));
 
-        AssemblerDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AssemblerDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AssemblerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 30, -1));
-
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("ENSAMBLADORES");
         getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 140, -1));
-
-        AssemblerHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AssemblerHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AssemblerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 30, -1));
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("TARJETAS GRÁFICAS");
@@ -297,76 +215,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("FUENTE DE ALIMENTACIÓN");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 140, -1));
-
-        CPUCapacityHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUCapacityHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 30, -1));
-
-        RAMCapacityHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMCapacityHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 30, -1));
-
-        PowerSupplyCapacityHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyCapacityHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 30, -1));
-
-        GraphicsCardCapacityHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardCapacityHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 30, -1));
-
-        PlaqueCapacityHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueCapacityHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 30, -1));
-
-        CPUHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 30, -1));
-
-        RAMHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 30, -1));
-
-        PowerSupplyHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 30, -1));
-
-        GraphicsCardHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 30, -1));
-
-        PlaqueHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 30, -1));
 
         jLabel11.setText("PRODUCTORES");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 100, 20));
@@ -397,76 +245,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel29.setText("FUENTE DE ALIMENTACIÓN");
         getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 140, -1));
 
-        CPUCapacityDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUCapacityDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 30, -1));
-
-        RAMCapacityDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMCapacityDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 30, -1));
-
-        PowerSupplyCapacityDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyCapacityDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 30, -1));
-
-        GraphicsCardCapacityDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardCapacityDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 30, -1));
-
-        PlaqueCapacityDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueCapacityDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 30, -1));
-
-        CPUDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CPUDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 30, -1));
-
-        RAMDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAMDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RAMDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 30, -1));
-
-        PowerSupplyDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PowerSupplyDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PowerSupplyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 30, -1));
-
-        GraphicsCardDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 30, -1));
-
-        PlaqueDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlaqueDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PlaqueDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 30, -1));
-
         jLabel30.setText("ELEMENTOS");
         getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 100, 20));
 
@@ -478,20 +256,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel32.setText("ESTÁNDAR");
         getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 140, -1));
 
-        StandardReadyHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StandardReadyHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(StandardReadyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 30, -1));
-
-        DirectorActivity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DirectorActivityActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DirectorActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 30, -1));
-
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("TARJETAS GRÁFICAS");
         getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 140, -1));
@@ -499,20 +263,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("ESTÁNDAR");
         getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 140, -1));
-
-        StandardReadyDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StandardReadyDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(StandardReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 30, -1));
-
-        GraphicsCardComputerReadyDell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardComputerReadyDellActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 30, -1));
 
         jLabel35.setText("DÍAS FALTANTES PARA LA ENTREGA");
         getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 640, 190, 20));
@@ -522,41 +272,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel37.setText("DIRECTOR");
         getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 130, 20));
-
-        PMActivity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PMActivityActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PMActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 30, -1));
-
-        PMFaults.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PMFaultsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PMFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 30, -1));
-
-        PMDiscount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PMDiscountActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PMDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 30, -1));
-
-        GraphicsCardComputerReadyHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GraphicsCardComputerReadyHPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GraphicsCardComputerReadyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 30, -1));
-
-        DaysLeft.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DaysLeftActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, 50, 40));
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("DESCUENTO");
@@ -573,6 +288,375 @@ public class GUI extends javax.swing.JFrame {
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("ACTIVIDAD");
         getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 590, 140, -1));
+
+        PlaqueProducerDell.setEditable(false);
+        PlaqueProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueProducerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueProducerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 30, -1));
+
+        RAMProducerDell.setEditable(false);
+        RAMProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMProducerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMProducerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 30, -1));
+
+        PowerSupplyProducerDell.setEditable(false);
+        PowerSupplyProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyProducerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyProducerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, -1));
+
+        GraphicsCardProducerDell.setEditable(false);
+        GraphicsCardProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardProducerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardProducerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 30, -1));
+
+        AssemblerDell.setEditable(false);
+        AssemblerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AssemblerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssemblerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AssemblerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 30, -1));
+
+        CPUProducerDell.setEditable(false);
+        CPUProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUProducerDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUProducerDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUProducerDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 30, -1));
+
+        PlaqueProducerHP.setEditable(false);
+        PlaqueProducerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueProducerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueProducerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 30, 20));
+
+        RAMProducerHP.setEditable(false);
+        RAMProducerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMProducerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMProducerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 30, 20));
+
+        PowerSupplyProducerHP.setEditable(false);
+        PowerSupplyProducerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyProducerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyProducerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 30, 20));
+
+        GraphicsCardProducerHP.setEditable(false);
+        GraphicsCardProducerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardProducerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardProducerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 30, 20));
+
+        AssemblerHP.setEditable(false);
+        AssemblerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AssemblerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssemblerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AssemblerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 30, 20));
+
+        CPUProducerHP.setEditable(false);
+        CPUProducerHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUProducerHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUProducerHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUProducerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 30, 20));
+
+        PlaqueDell.setEditable(false);
+        PlaqueDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 30, -1));
+
+        RAMDell.setEditable(false);
+        RAMDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 30, -1));
+
+        PowerSupplyDell.setEditable(false);
+        PowerSupplyDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 30, -1));
+
+        GraphicsCardDell.setEditable(false);
+        GraphicsCardDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 30, -1));
+
+        CPUDell.setEditable(false);
+        CPUDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 30, -1));
+
+        PlaqueCapacityDell.setEditable(false);
+        PlaqueCapacityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueCapacityDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueCapacityDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 30, -1));
+
+        RAMCapacityDell.setEditable(false);
+        RAMCapacityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMCapacityDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMCapacityDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 30, -1));
+
+        PowerSupplyCapacityDell.setEditable(false);
+        PowerSupplyCapacityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyCapacityDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyCapacityDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 30, -1));
+
+        GraphicsCardCapacityDell.setEditable(false);
+        GraphicsCardCapacityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardCapacityDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardCapacityDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 30, -1));
+
+        CPUCapacityDell.setEditable(false);
+        CPUCapacityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUCapacityDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUCapacityDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUCapacityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 30, -1));
+
+        PlaqueHP.setEditable(false);
+        PlaqueHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 30, -1));
+
+        RAMHP.setEditable(false);
+        RAMHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 30, -1));
+
+        PowerSupplyHP.setEditable(false);
+        PowerSupplyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 30, -1));
+
+        GraphicsCardHP.setEditable(false);
+        GraphicsCardHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 30, -1));
+
+        CPUHP.setEditable(false);
+        CPUHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 30, -1));
+
+        PlaqueCapacityHP.setEditable(false);
+        PlaqueCapacityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PlaqueCapacityHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlaqueCapacityHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlaqueCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 30, -1));
+
+        RAMCapacityHP.setEditable(false);
+        RAMCapacityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAMCapacityHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMCapacityHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RAMCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 30, -1));
+
+        PowerSupplyCapacityHP.setEditable(false);
+        PowerSupplyCapacityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PowerSupplyCapacityHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PowerSupplyCapacityHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PowerSupplyCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 30, -1));
+
+        GraphicsCardCapacityHP.setEditable(false);
+        GraphicsCardCapacityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardCapacityHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardCapacityHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 30, -1));
+
+        CPUCapacityHP.setEditable(false);
+        CPUCapacityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CPUCapacityHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CPUCapacityHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CPUCapacityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 30, -1));
+
+        StandardComputerReadyHP.setEditable(false);
+        StandardComputerReadyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        StandardComputerReadyHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StandardComputerReadyHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(StandardComputerReadyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 30, -1));
+
+        DaysLeft.setEditable(false);
+        DaysLeft.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DaysLeft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaysLeftActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 640, 50, 40));
+
+        GraphicsCardComputerReadyHP.setEditable(false);
+        GraphicsCardComputerReadyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardComputerReadyHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardComputerReadyHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardComputerReadyHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 30, -1));
+
+        StandardComputerReadyDell.setEditable(false);
+        StandardComputerReadyDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        StandardComputerReadyDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StandardComputerReadyDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(StandardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 30, -1));
+
+        GraphicsCardComputerReadyDell.setEditable(false);
+        GraphicsCardComputerReadyDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        GraphicsCardComputerReadyDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraphicsCardComputerReadyDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GraphicsCardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 30, -1));
+
+        DirectorActivity.setEditable(false);
+        DirectorActivity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DirectorActivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DirectorActivityActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DirectorActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 30, -1));
+
+        PMFaults.setEditable(false);
+        PMFaults.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PMFaults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PMFaultsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PMFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 30, -1));
+
+        PMDiscount.setEditable(false);
+        PMDiscount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PMDiscount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PMDiscountActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PMDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 30, -1));
+
+        PMActivity.setEditable(false);
+        PMActivity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PMActivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PMActivityActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PMActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 30, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -694,11 +778,40 @@ public class GUI extends javax.swing.JFrame {
     
     private void resetValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetValuesActionPerformed
         // TODO add your handling code here:
+        int inputDuracionDias = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tiempo que dura un dia en segundos: "));
+        int inputCantidadDias = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de dias entre las entregas de las computadoras a las distribuidoras: "));
+        
+//      Dell
+        int inputPlaqueProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de Dell: "));
+        int inputCPUProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de Dell: "));
+        int inputRAMProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de Dell: "));
+        int inputPowerSupplyProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de Dell: "));
+        int inputGaphicsCardProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de Dell: "));
+        int inputAssemblersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de Dell: "));
+        
+//      HP
+        int inputPlaqueProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de HP: "));
+        int inputCPUProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de HP: "));
+        int inputRAMProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de HP: "));
+        int inputPowerSupplyProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de HP: "));
+        int inputGaphicsCardProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de HP: "));
+        int inputAssemblersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de HP: "));
+
+        String archivotxt = inputDuracionDias + "//" + inputCantidadDias + "//" + inputPlaqueProducersDell + "," + inputCPUProducersDell + "," + inputRAMProducersDell + "," + inputPowerSupplyProducersDell + "," + inputGaphicsCardProducersDell + "," + inputAssemblersDell + "//" + inputPlaqueProducersHP + "," + inputCPUProducersHP + "," + inputRAMProducersHP + "," + inputPowerSupplyProducersHP + "," + inputGaphicsCardProducersHP + "," + inputAssemblersHP;
+        
+        try {
+            PrintStream out = new PrintStream(new FileOutputStream("archivo.txt"));
+            out.print(archivotxt);
+        } catch (Exception e) {
+            
+        }
+        
+    
     }//GEN-LAST:event_resetValuesActionPerformed
 
-    private void CPUProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUProducerDellActionPerformed
+    private void PlaqueProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueProducerDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CPUProducerDellActionPerformed
+    }//GEN-LAST:event_PlaqueProducerDellActionPerformed
 
     private void RAMProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMProducerDellActionPerformed
         // TODO add your handling code here:
@@ -712,13 +825,17 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GraphicsCardProducerDellActionPerformed
 
-    private void PlaqueProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueProducerDellActionPerformed
+    private void AssemblerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssemblerDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueProducerDellActionPerformed
+    }//GEN-LAST:event_AssemblerDellActionPerformed
 
-    private void CPUProducerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUProducerHPActionPerformed
+    private void CPUProducerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUProducerDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CPUProducerHPActionPerformed
+    }//GEN-LAST:event_CPUProducerDellActionPerformed
+
+    private void PlaqueProducerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueProducerHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PlaqueProducerHPActionPerformed
 
     private void RAMProducerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMProducerHPActionPerformed
         // TODO add your handling code here:
@@ -732,81 +849,17 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GraphicsCardProducerHPActionPerformed
 
-    private void PlaqueProducerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueProducerHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueProducerHPActionPerformed
-
-    private void AssemblerDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssemblerDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AssemblerDellActionPerformed
-
     private void AssemblerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssemblerHPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AssemblerHPActionPerformed
 
-    private void CPUCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUCapacityHPActionPerformed
+    private void CPUProducerHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUProducerHPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CPUCapacityHPActionPerformed
+    }//GEN-LAST:event_CPUProducerHPActionPerformed
 
-    private void RAMCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMCapacityHPActionPerformed
+    private void PlaqueDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RAMCapacityHPActionPerformed
-
-    private void PowerSupplyCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyCapacityHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PowerSupplyCapacityHPActionPerformed
-
-    private void GraphicsCardCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardCapacityHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GraphicsCardCapacityHPActionPerformed
-
-    private void PlaqueCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueCapacityHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueCapacityHPActionPerformed
-
-    private void CPUHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPUHPActionPerformed
-
-    private void RAMHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RAMHPActionPerformed
-
-    private void PowerSupplyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PowerSupplyHPActionPerformed
-
-    private void GraphicsCardHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GraphicsCardHPActionPerformed
-
-    private void PlaqueHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueHPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueHPActionPerformed
-
-    private void CPUCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUCapacityDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPUCapacityDellActionPerformed
-
-    private void RAMCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMCapacityDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RAMCapacityDellActionPerformed
-
-    private void PowerSupplyCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyCapacityDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PowerSupplyCapacityDellActionPerformed
-
-    private void GraphicsCardCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardCapacityDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GraphicsCardCapacityDellActionPerformed
-
-    private void PlaqueCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueCapacityDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueCapacityDellActionPerformed
-
-    private void CPUDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUDellActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPUDellActionPerformed
+    }//GEN-LAST:event_PlaqueDellActionPerformed
 
     private void RAMDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMDellActionPerformed
         // TODO add your handling code here:
@@ -820,29 +873,93 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GraphicsCardDellActionPerformed
 
-    private void PlaqueDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueDellActionPerformed
+    private void CPUDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PlaqueDellActionPerformed
+    }//GEN-LAST:event_CPUDellActionPerformed
 
-    private void StandardReadyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StandardReadyHPActionPerformed
+    private void PlaqueCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueCapacityDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StandardReadyHPActionPerformed
+    }//GEN-LAST:event_PlaqueCapacityDellActionPerformed
 
-    private void DirectorActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DirectorActivityActionPerformed
+    private void RAMCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMCapacityDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DirectorActivityActionPerformed
+    }//GEN-LAST:event_RAMCapacityDellActionPerformed
 
-    private void StandardReadyDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StandardReadyDellActionPerformed
+    private void PowerSupplyCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyCapacityDellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StandardReadyDellActionPerformed
+    }//GEN-LAST:event_PowerSupplyCapacityDellActionPerformed
+
+    private void GraphicsCardCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardCapacityDellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraphicsCardCapacityDellActionPerformed
+
+    private void CPUCapacityDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUCapacityDellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CPUCapacityDellActionPerformed
+
+    private void PlaqueHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PlaqueHPActionPerformed
+
+    private void RAMHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RAMHPActionPerformed
+
+    private void PowerSupplyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PowerSupplyHPActionPerformed
+
+    private void GraphicsCardHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraphicsCardHPActionPerformed
+
+    private void CPUHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CPUHPActionPerformed
+
+    private void PlaqueCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaqueCapacityHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PlaqueCapacityHPActionPerformed
+
+    private void RAMCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMCapacityHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RAMCapacityHPActionPerformed
+
+    private void PowerSupplyCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PowerSupplyCapacityHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PowerSupplyCapacityHPActionPerformed
+
+    private void GraphicsCardCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardCapacityHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraphicsCardCapacityHPActionPerformed
+
+    private void CPUCapacityHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUCapacityHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CPUCapacityHPActionPerformed
+
+    private void StandardComputerReadyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StandardComputerReadyHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StandardComputerReadyHPActionPerformed
+
+    private void DaysLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaysLeftActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DaysLeftActionPerformed
+
+    private void GraphicsCardComputerReadyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardComputerReadyHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GraphicsCardComputerReadyHPActionPerformed
+
+    private void StandardComputerReadyDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StandardComputerReadyDellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StandardComputerReadyDellActionPerformed
 
     private void GraphicsCardComputerReadyDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardComputerReadyDellActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GraphicsCardComputerReadyDellActionPerformed
 
-    private void PMActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PMActivityActionPerformed
+    private void DirectorActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DirectorActivityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PMActivityActionPerformed
+    }//GEN-LAST:event_DirectorActivityActionPerformed
 
     private void PMFaultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PMFaultsActionPerformed
         // TODO add your handling code here:
@@ -852,13 +969,9 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PMDiscountActionPerformed
 
-    private void GraphicsCardComputerReadyHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraphicsCardComputerReadyHPActionPerformed
+    private void PMActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PMActivityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_GraphicsCardComputerReadyHPActionPerformed
-
-    private void DaysLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaysLeftActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DaysLeftActionPerformed
+    }//GEN-LAST:event_PMActivityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -935,8 +1048,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField RAMHP;
     private javax.swing.JTextField RAMProducerDell;
     private javax.swing.JTextField RAMProducerHP;
-    private javax.swing.JTextField StandardReadyDell;
-    private javax.swing.JTextField StandardReadyHP;
+    private javax.swing.JTextField StandardComputerReadyDell;
+    private javax.swing.JTextField StandardComputerReadyHP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
