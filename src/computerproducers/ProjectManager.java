@@ -22,6 +22,24 @@ public class ProjectManager extends Thread{
         this.sleep_time = sleep_time;
         
     }
+
+    public int getRemainingDays() {
+        return remainingDays;
+    }
+
+    public int getSleep_time() {
+        return sleep_time;
+    }
+
+    public void setRemainingDays(int remainingDays) {
+        this.remainingDays = remainingDays;
+    }
+
+    public void setSleep_time(int sleep_time) {
+        this.sleep_time = sleep_time;
+    }
+    
+    
     
     @Override
     public void run(){
