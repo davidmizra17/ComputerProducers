@@ -5,8 +5,14 @@
  */
 package computerproducers;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -892,20 +898,22 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //REVISAR LA ASIGNACION DE LOS TIEMPOS DE SLEEP PARA CADA HILO
-        initializeDELLWorkers();
-        initializeHPWorkers();
+        
+        writeOnFile();
+        readFile();
+
         
     }//GEN-LAST:event_startSimulationActionPerformed
     
-    private void initializeDELLWorkers(){
+    private void initializeDELLWorkers(HashMap<String, Integer> valoresProductores){
         try {
         // Try to parse the input as a double or integer
-        int amount_of_plaque_producers = Integer.parseInt(PlaqueProducerDell.getText());
-        int amount_of_graphicCard_producers = Integer.parseInt(GraphicsCardProducerDell.getText());
-        int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerDell.getText());
-        int amount_of_ram_producers = Integer.parseInt(RAMProducerDell.getText());
-        int amount_of_cpu_producers = Integer.parseInt(CPUProducerDell.getText());
-        int amount_of_assemblers = Integer.parseInt(AssemblerDell.getText());
+        int amount_of_plaque_producers = valoresProductores.get("placasDELL");
+        int amount_of_graphicCard_producers = valoresProductores.get("tarjetasDELL");
+        int amount_of_powerSupply_producers = valoresProductores.get("fuenteDELL");
+        int amount_of_ram_producers = valoresProductores.get("ramDELL");
+        int amount_of_cpu_producers = valoresProductores.get("cpuDELL");
+        int amount_of_assemblers = valoresProductores.get("ensambladoresDELL");
         
         int total_workers = amount_of_plaque_producers + amount_of_graphicCard_producers + amount_of_powerSupply_producers + amount_of_ram_producers + amount_of_cpu_producers;
         
@@ -951,16 +959,68 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores debe ser un número entero."); 
     }
     }
+    private void readFile(){
+        
+        HashMap<String, Integer> valoresProductores = new HashMap<>();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("valores.txt"));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Separar la línea en "clave: valor"
+                String[] partes = linea.split(": ");
+                if (partes.length == 2) {
+                    String componente = partes[0].trim(); // "placaHP" o "cpuDELL"
+                    int valor = Integer.parseInt(partes[1].trim()); // el valor numérico
+
+                    // Guardar en el mapa
+                    valoresProductores.put(componente, valor);
+                }
+            }
+            
+            
+            System.out.println(valoresProductores);
+            br.close();
+        initializeDELLWorkers(valoresProductores);
+        initializeHPWorkers(valoresProductores);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void writeOnFile() {
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("valores.txt"))) {
+            // Escribe los valores de Dell
+            writer.write("placasDELL: " + PlaqueProducerDell.getText() + "\n");
+            writer.write("cpuDELL: " + CPUProducerDell.getText() + "\n");
+            writer.write("ramDELL: " + RAMProducerDell.getText() + "\n");
+            writer.write("fuenteDELL: " + PowerSupplyProducerDell.getText() + "\n");
+            writer.write("tarjetasDELL: " + GraphicsCardProducerDell.getText() + "\n");
+            writer.write("ensambladoresDELL: " + AssemblerDell.getText() + "\n");
+
+            // Escribe los valores de HP
+            writer.write("placasHP: " + PlaqueProducerHP.getText() + "\n");
+            writer.write("cpuHP: " + CPUProducerHP.getText() + "\n");
+            writer.write("ramHP: " + RAMProducerHP.getText() + "\n");
+            writer.write("fuenteHP: " + PowerSupplyProducerHP.getText() + "\n");
+            writer.write("tarjetasHP: " + GraphicsCardProducerHP.getText() + "\n");
+            writer.write("ensambladoresHP: " + AssemblerHP.getText() + "\n");
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     
-    private void initializeHPWorkers(){
+    }
+    
+    private void initializeHPWorkers(HashMap<String, Integer> valoresProductores){
         try {
         // Try to parse the input as a double or integer
-        int amount_of_plaque_producers = Integer.parseInt(PlaqueProducerHP.getText());
-        int amount_of_graphicCard_producers = Integer.parseInt(GraphicsCardProducerHP.getText());
-        int amount_of_powerSupply_producers = Integer.parseInt(PowerSupplyProducerHP.getText());
-        int amount_of_ram_producers = Integer.parseInt(RAMProducerHP.getText());
-        int amount_of_cpu_producers = Integer.parseInt(CPUProducerHP.getText());
-        int amount_of_assemblers = Integer.parseInt(AssemblerHP.getText());
+        int amount_of_plaque_producers = valoresProductores.get("placasHP");
+        int amount_of_graphicCard_producers = valoresProductores.get("tarjetasHP");
+        int amount_of_powerSupply_producers = valoresProductores.get("fuenteHP");
+        int amount_of_ram_producers = valoresProductores.get("ramHP");
+        int amount_of_cpu_producers = valoresProductores.get("cpuHP");
+        int amount_of_assemblers = valoresProductores.get("ensambladoresHP");
         
         if (amount_of_plaque_producers > 0) {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
@@ -1024,15 +1084,6 @@ public class GUI extends javax.swing.JFrame {
         int inputGaphicsCardProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de HP: "));
         int inputAssemblersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de HP: "));
 
-        String archivotxt = inputDuracionDias + "//" + inputCantidadDias + "//" + inputPlaqueProducersDell + "," + inputCPUProducersDell + "," + inputRAMProducersDell + "," + inputPowerSupplyProducersDell + "," + inputGaphicsCardProducersDell + "," + inputAssemblersDell + "//" + inputPlaqueProducersHP + "," + inputCPUProducersHP + "," + inputRAMProducersHP + "," + inputPowerSupplyProducersHP + "," + inputGaphicsCardProducersHP + "," + inputAssemblersHP;
-        
-        try {
-            PrintStream out = new PrintStream(new FileOutputStream("archivo.txt"));
-            out.print(archivotxt);
-        } catch (Exception e) {
-            
-        }
-        
     
     }//GEN-LAST:event_resetValuesActionPerformed
 

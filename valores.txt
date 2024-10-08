@@ -1,0 +1,12 @@
+placasDELL: 3
+cpuDELL: 5
+ramDELL: 3
+fuenteDELL: 1
+tarjetasDELL: 2
+ensambladoresDELL: 1
+placasHP: 5
+cpuHP: 1
+ramHP: 6
+fuenteHP: 3
+tarjetasHP: 6
+ensambladoresHP: 1
