@@ -921,26 +921,32 @@ public class GUI extends javax.swing.JFrame {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
                 PlaqueProducer worker = new PlaqueProducer(25, 500);
                 worker.start();
+                PlaqueCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
             }
+            
             
             for (int i = 0; i < amount_of_graphicCard_producers; i++) {
                 GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
                 worker.start();
+                GraphicsCardCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_powerSupply_producers; i++) {
                 PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
                 worker.start();
+                PowerSupplyCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_ram_producers; i++) {
                 RAMProducer worker = new RAMProducer(25, 500);
                 worker.start();
+                RAMCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_cpu_producers; i++) {
                 CPUProducer worker = new CPUProducer(25, 500);
                 worker.start();
+                CPUCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
@@ -1026,26 +1032,31 @@ public class GUI extends javax.swing.JFrame {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
                 PlaqueProducer worker = new PlaqueProducer(25, 500);
                 worker.start();
+                PlaqueCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_graphicCard_producers; i++) {
                 GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
                 worker.start();
+                GraphicsCardCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_powerSupply_producers; i++) {
                 PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
                 worker.start();
+                PowerSupplyCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_ram_producers; i++) {
                 RAMProducer worker = new RAMProducer(25, 500);
                 worker.start();
+                RAMCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_cpu_producers; i++) {
                 CPUProducer worker = new CPUProducer(25, 500);
                 worker.start();
+                CPUCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {

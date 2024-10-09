@@ -26,6 +26,11 @@ public class PowerSupplyProducer extends Producer {
         super(salary, time_sleep);
     }
 
+    public int getStore_capacity() {
+        int storecapacity = STORE_CAPACITY;
+        return storecapacity;
+    }
+    
     public static Semaphore getSemaphore() {
         return semaphore;
     }

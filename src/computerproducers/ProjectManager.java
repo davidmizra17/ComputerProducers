@@ -6,6 +6,7 @@ package computerproducers;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,9 +17,11 @@ public class ProjectManager extends Thread{
     private int remainingDays;
     private int sleep_time; 
     
+    private JTextField DaysLeft;
+    
     public ProjectManager(int remainingDays, int sleep_time){
         
-        this.remainingDays = remainingDays;
+        this.remainingDays = 4;
         this.sleep_time = sleep_time;
         
     }
@@ -50,6 +53,8 @@ public class ProjectManager extends Thread{
                 //ESTADO: trabajando
                 remainingDays-= 1;
                 Thread.sleep(30);
+                
+                DaysLeft.setText(Integer.toString(remainingDays));
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);

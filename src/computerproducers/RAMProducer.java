@@ -7,6 +7,7 @@ package computerproducers;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,10 +18,15 @@ public class RAMProducer extends Producer{
     public static final int STORE_CAPACITY = 55;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
+    private JTextField RAMCapacity;
     
     
     public static int store_counter;
-    
+
+    public int getStore_capacity() {
+        int storecapacity = STORE_CAPACITY;
+        return storecapacity;
+    }
     
     public RAMProducer(int salary, int time_sleep){
         super(salary, time_sleep);
