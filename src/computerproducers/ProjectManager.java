@@ -19,13 +19,23 @@ public class ProjectManager extends Thread{
     
     private JTextField DaysLeft;
     
+    public ProjectManager(){
+        this.DaysLeft = new JTextField();
+    }
+    
     public ProjectManager(int remainingDays, int sleep_time){
         
         this.remainingDays = 4;
         this.sleep_time = sleep_time;
         
+        this.DaysLeft = new JTextField();
+        
     }
 
+    public void setDaysLeft(JTextField DaysLeft) {
+        this.DaysLeft = DaysLeft;
+    }
+    
     public int getRemainingDays() {
         return remainingDays;
     }

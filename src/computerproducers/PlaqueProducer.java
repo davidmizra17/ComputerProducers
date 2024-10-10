@@ -8,6 +8,7 @@ import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,7 +18,7 @@ public class PlaqueProducer extends Producer {
     public static final int STORE_CAPACITY = 25;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
-    
+
     public static int store_counter;
     
     public PlaqueProducer(int salary, int time_sleep){
@@ -95,7 +96,6 @@ public class PlaqueProducer extends Producer {
         while(running) {
             incrementCounter();
             Thread.yield();// increment with Semaphore control
-            
         }
         
         if(store_counter == STORE_CAPACITY){

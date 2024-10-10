@@ -6,6 +6,7 @@ package computerproducers;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -34,6 +35,21 @@ public class Assembler extends Thread {
     private int plaques_needed;
     private int power_supply_needed;
     
+    //Text Fields GUI
+    private JTextField RAMProduced;
+    private JTextField CPUProduced;
+    private JTextField PowerSupplyProduced;
+    private JTextField GraphicsCardProduced;
+    private JTextField PlaquesProduced;
+    
+    
+    public Assembler(){
+        this.CPUProduced = new JTextField();
+        this.GraphicsCardProduced = new JTextField();
+        this.PlaquesProduced = new JTextField();
+        this.PowerSupplyProduced = new JTextField();
+        this.RAMProduced = new JTextField();
+    }
     
     public Assembler(int salary, int sleep_time, int ram_needed, int cpu_needed, int graphicCardsNeeded, int plaques_needed, int power_supply_needed, int standardComputersNeeded, int graphicCardComputers){
         
@@ -56,9 +72,37 @@ public class Assembler extends Thread {
         this.plaques_needed = plaques_needed;
         this.power_supply_needed = power_supply_needed;
         
+        //Initializa JTextField Variables
+        this.CPUProduced = new JTextField();
+        this.GraphicsCardProduced = new JTextField();
+        this.PlaquesProduced = new JTextField();
+        this.PowerSupplyProduced = new JTextField();
+        this.RAMProduced = new JTextField();
         
     }
 
+    public void setRAMProduced(JTextField RAMProduced) {
+        this.RAMProduced = RAMProduced;
+    }
+
+    public void setCPUProduced(JTextField CPUProduced) {
+        this.CPUProduced = CPUProduced;
+    }
+
+    public void setPowerSupplyProduced(JTextField PowerSupplyProduced) {
+        this.PowerSupplyProduced = PowerSupplyProduced;
+    }
+
+    public void setGraphicsCardProduced(JTextField GraphicsCardProduced) {
+        this.GraphicsCardProduced = GraphicsCardProduced;
+    }
+
+    public void setPlaquesProduced(JTextField PlaquesProduced) {
+        this.PlaquesProduced = PlaquesProduced;
+    }
+    
+    
+    
     public int getComputer_counter() {
         return standardComputerCounter;
     }
@@ -208,7 +252,12 @@ public class Assembler extends Thread {
         while(true){
             
             try {
-                Thread.sleep(sleep_time);
+                Thread.sleep(sleep_time);  
+                RAMProduced.setText(Integer.toString(ram_counter));
+                CPUProduced.setText(Integer.toString(cpu_counter));
+                PowerSupplyProduced.setText(Integer.toString(powerSupplyCounter));
+                GraphicsCardProduced.setText(Integer.toString(graphicsCardCounter));
+                PlaquesProduced.setText(Integer.toString(plaque_counter));
                 standardComputerCounter+= standardComputerAssembly();
                 if(standardComputerCounter == STANDARD_COMPUTERS_NEEDED){
                     //reset values, assemble computers with graphics cards and start count for regular computers again

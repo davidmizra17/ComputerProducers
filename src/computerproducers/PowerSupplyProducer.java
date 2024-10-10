@@ -8,6 +8,7 @@ import static computerproducers.RAMProducer.STORE_CAPACITY;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,7 +19,8 @@ public class PowerSupplyProducer extends Producer {
     public static final int STORE_CAPACITY = 35;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
-   
+
+    
     public static int store_counter;
     
     

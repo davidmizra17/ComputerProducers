@@ -18,7 +18,7 @@ public class RAMProducer extends Producer{
     public static final int STORE_CAPACITY = 55;
     private static Semaphore semaphore = new Semaphore(1);
     private static volatile boolean running = true;
-    private JTextField RAMCapacity;
+
     
     
     public static int store_counter;
@@ -30,6 +30,11 @@ public class RAMProducer extends Producer{
     
     public RAMProducer(int salary, int time_sleep){
         super(salary, time_sleep);
+    }
+    
+    public int getStoreCounter(){
+        int storecounter = store_counter;
+        return storecounter;
     }
 
     public static int getStore_counter() {
@@ -91,7 +96,6 @@ public class RAMProducer extends Producer{
         while(running) {
             incrementCounter();
             Thread.yield();// increment with Semaphore control
-            
         }
         
         if(store_counter == STORE_CAPACITY){
