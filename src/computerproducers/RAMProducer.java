@@ -22,20 +22,44 @@ public class RAMProducer extends Producer{
     
     
     public static int store_counter;
+    public JTextField RAMCounterDisplayer;
 
+    
+    
+    public RAMProducer(int salary, int time_sleep, JTextField RAMCounterDisplayer){
+        super(salary, time_sleep);
+        
+        this.store_counter = 0;
+        this.RAMCounterDisplayer = RAMCounterDisplayer;
+    }
+    
     public int getStore_capacity() {
         int storecapacity = STORE_CAPACITY;
         return storecapacity;
-    }
-    
-    public RAMProducer(int salary, int time_sleep){
-        super(salary, time_sleep);
     }
     
     public int getStoreCounter(){
         int storecounter = store_counter;
         return storecounter;
     }
+
+    public static boolean isRunning() {
+        return running;
+    }
+
+    public static void setRunning(boolean running) {
+        RAMProducer.running = running;
+    }
+
+    public JTextField getRAMCounterDisplayer() {
+        return RAMCounterDisplayer;
+    }
+
+    public void setRAMCounterDisplayer(JTextField RAMCounterDisplayer) {
+        this.RAMCounterDisplayer = RAMCounterDisplayer;
+    }
+    
+    
 
     public static int getStore_counter() {
         return store_counter;
@@ -75,6 +99,9 @@ public class RAMProducer extends Producer{
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
+                
+                RAMCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                
                 System.out.println("RAM Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;

@@ -919,7 +919,7 @@ public class GUI extends javax.swing.JFrame {
         
         if (amount_of_plaque_producers > 0 && total_workers <= MAX_AMOUNT) {
             for (int i = 0; i < amount_of_plaque_producers; i++) {
-                PlaqueProducer worker = new PlaqueProducer(25, 500);
+                PlaqueProducer worker = new PlaqueProducer(25, 500, PlaqueDell);
                 worker.start();
                 PlaqueCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
 //                PlaqueDell.setText(Integer.toString(worker.store_counter));
@@ -927,40 +927,35 @@ public class GUI extends javax.swing.JFrame {
             
             
             for (int i = 0; i < amount_of_graphicCard_producers; i++) {
-                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
+                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500, GraphicsCardDell);
                 worker.start();
                 GraphicsCardCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
 //                GraphicsCardDell.setText(Integer.toString(worker.store_counter));
             }
             
             for (int i = 0; i < amount_of_powerSupply_producers; i++) {
-                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
+                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500, PowerSupplyDell);
                 worker.start();
                 PowerSupplyCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
 //                PowerSupplyDell.setText(Integer.toString(worker.store_counter));
             }
             
             for (int i = 0; i < amount_of_ram_producers; i++) {
-                RAMProducer worker = new RAMProducer(25, 500);
+                RAMProducer worker = new RAMProducer(25, 500, RAMDell);
                 worker.start();
                 RAMCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
 //                RAMDell.setText(Integer.toString(worker.getStoreCounter()));
             }
             
             for (int i = 0; i < amount_of_cpu_producers; i++) {
-                CPUProducer worker = new CPUProducer(25, 500);
+                CPUProducer worker = new CPUProducer(25, 500, CPUDell);
                 worker.start();
                 CPUCapacityDell.setText(Integer.toString(worker.getStore_capacity()));
 //                CPUDell.setText(Integer.toString(worker.store_counter));
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerDell = new Assembler(50, 2000, 6, 5, 3, 1, 5, 3, 1);
-                assemblerDell.setCPUProduced(CPUDell);
-                assemblerDell.setGraphicsCardProduced(GraphicsCardDell);
-                assemblerDell.setPlaquesProduced(PlaqueDell);
-                assemblerDell.setPowerSupplyProduced(PowerSupplyDell);
-                assemblerDell.setRAMProduced(RAMDell);
+                Assembler assemblerDell = new Assembler(50, 2000, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell);
                 assemblerDell.start();
             }
             
@@ -998,7 +993,7 @@ public class GUI extends javax.swing.JFrame {
             System.out.println(valoresProductores);
             br.close();
         initializeDELLWorkers(valoresProductores);
-        initializeHPWorkers(valoresProductores);
+//        initializeHPWorkers(valoresProductores);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -1028,71 +1023,71 @@ public class GUI extends javax.swing.JFrame {
     
     }
     
-    private void initializeHPWorkers(HashMap<String, Integer> valoresProductores){
-        try {
-        // Try to parse the input as a double or integer
-        int amount_of_plaque_producers = valoresProductores.get("placasHP");
-        int amount_of_graphicCard_producers = valoresProductores.get("tarjetasHP");
-        int amount_of_powerSupply_producers = valoresProductores.get("fuenteHP");
-        int amount_of_ram_producers = valoresProductores.get("ramHP");
-        int amount_of_cpu_producers = valoresProductores.get("cpuHP");
-        int amount_of_assemblers = valoresProductores.get("ensambladoresHP");
-        
-        if (amount_of_plaque_producers > 0) {
-            for (int i = 0; i < amount_of_plaque_producers; i++) {
-                PlaqueProducer worker = new PlaqueProducer(25, 500);
-                worker.start();
-                PlaqueCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
-//                PlaqueHP.setText(Integer.toString(worker.store_counter));
-            }
-            
-            for (int i = 0; i < amount_of_graphicCard_producers; i++) {
-                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
-                worker.start();
-                GraphicsCardCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
-//                GraphicsCardHP.setText(Integer.toString(worker.store_counter));
-            }
-            
-            for (int i = 0; i < amount_of_powerSupply_producers; i++) {
-                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
-                worker.start();
-                PowerSupplyCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
-//                PowerSupplyHP.setText(Integer.toString(worker.store_counter));
-            }
-            
-            for (int i = 0; i < amount_of_ram_producers; i++) {
-                RAMProducer worker = new RAMProducer(25, 500);
-                worker.start();
-                RAMCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
-//                RAMHP.setText(Integer.toString(worker.getStoreCounter()));
-            }
-            
-            for (int i = 0; i < amount_of_cpu_producers; i++) {
-                CPUProducer worker = new CPUProducer(25, 500);
-                worker.start();
-                CPUCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
-//                CPUHP.setText(Integer.toString(worker.store_counter));
-            }
-            
-            for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler worker = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3);
-                worker.setCPUProduced(CPUHP);
-                worker.setGraphicsCardProduced(GraphicsCardHP);
-                worker.setPlaquesProduced(PlaqueHP);
-                worker.setPowerSupplyProduced(PowerSupplyHP);
-                worker.setRAMProduced(RAMHP);
-                worker.start();
-            }
-            
-         }else{
-            JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
-        }
-        
-         // If it parses without throwing an exception, it's numeric
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores debe ser un número entero."); 
-    }
-    }
+//    private void initializeHPWorkers(HashMap<String, Integer> valoresProductores){
+//        try {
+//        // Try to parse the input as a double or integer
+//        int amount_of_plaque_producers = valoresProductores.get("placasHP");
+//        int amount_of_graphicCard_producers = valoresProductores.get("tarjetasHP");
+//        int amount_of_powerSupply_producers = valoresProductores.get("fuenteHP");
+//        int amount_of_ram_producers = valoresProductores.get("ramHP");
+//        int amount_of_cpu_producers = valoresProductores.get("cpuHP");
+//        int amount_of_assemblers = valoresProductores.get("ensambladoresHP");
+//        
+//        if (amount_of_plaque_producers > 0) {
+//            for (int i = 0; i < amount_of_plaque_producers; i++) {
+//                PlaqueProducer worker = new PlaqueProducer(25, 500);
+//                worker.start();
+//                PlaqueCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
+////                PlaqueHP.setText(Integer.toString(worker.store_counter));
+//            }
+//            
+//            for (int i = 0; i < amount_of_graphicCard_producers; i++) {
+//                GraphicsCardProducer worker = new GraphicsCardProducer(25, 500);
+//                worker.start();
+//                GraphicsCardCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
+////                GraphicsCardHP.setText(Integer.toString(worker.store_counter));
+//            }
+//            
+//            for (int i = 0; i < amount_of_powerSupply_producers; i++) {
+//                PowerSupplyProducer worker = new PowerSupplyProducer(25, 500);
+//                worker.start();
+//                PowerSupplyCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
+////                PowerSupplyHP.setText(Integer.toString(worker.store_counter));
+//            }
+//            
+//            for (int i = 0; i < amount_of_ram_producers; i++) {
+//                RAMProducer worker = new RAMProducer(25, 500);
+//                worker.start();
+//                RAMCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
+////                RAMHP.setText(Integer.toString(worker.getStoreCounter()));
+//            }
+//            
+//            for (int i = 0; i < amount_of_cpu_producers; i++) {
+//                CPUProducer worker = new CPUProducer(25, 500);
+//                worker.start();
+//                CPUCapacityHP.setText(Integer.toString(worker.getStore_capacity()));
+////                CPUHP.setText(Integer.toString(worker.store_counter));
+//            }
+//            
+//            for (int i = 0; i < amount_of_assemblers; i++) {
+//                Assembler worker = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3);
+//                worker.setCPUProduced(CPUHP);
+//                worker.setGraphicsCardProduced(GraphicsCardHP);
+//                worker.setPlaquesProduced(PlaqueHP);
+//                worker.setPowerSupplyProduced(PowerSupplyHP);
+//                worker.setRAMProduced(RAMHP);
+//                worker.start();
+//            }
+//            
+//         }else{
+//            JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
+//        }
+//        
+//         // If it parses without throwing an exception, it's numeric
+//    } catch (NumberFormatException e) {
+//        JOptionPane.showMessageDialog(rootPane, "ERROR: La cantidad de trabajadores debe ser un número entero."); 
+//    }
+//    }
     
     private void resetValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetValuesActionPerformed
         // TODO add your handling code here:

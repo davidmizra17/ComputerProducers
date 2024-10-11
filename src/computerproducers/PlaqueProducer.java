@@ -20,9 +20,12 @@ public class PlaqueProducer extends Producer {
     private static volatile boolean running = true;
 
     public static int store_counter;
+    public JTextField plaqueCounterDisplayer;
     
-    public PlaqueProducer(int salary, int time_sleep){
+    public PlaqueProducer(int salary, int time_sleep, JTextField plaqueCounterDisplayer){
         super(salary, time_sleep);
+        this.store_counter = 0;
+        this.plaqueCounterDisplayer = plaqueCounterDisplayer;
         
     }
     
@@ -31,6 +34,16 @@ public class PlaqueProducer extends Producer {
         return storecapacity;
     }
 
+    public JTextField getPlaqueCounterDisplayer() {
+        return plaqueCounterDisplayer;
+    }
+
+    public void setPlaqueCounterDisplayer(JTextField plaqueCounterDisplayer) {
+        this.plaqueCounterDisplayer = plaqueCounterDisplayer;
+    }
+    
+    
+    
     public static int getStore_counter() {
         return store_counter;
     }
@@ -75,7 +88,11 @@ public class PlaqueProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
+                
+                plaqueCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                
                 System.out.println("Plaques Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
+                
             }else{
                 running = false;
             }

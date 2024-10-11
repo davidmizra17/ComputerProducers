@@ -5,6 +5,7 @@
 package computerproducers;
 
 import static computerproducers.GraphicsCardProducer.STORE_CAPACITY;
+import static computerproducers.PowerSupplyProducer.getStore_counter;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,9 +23,12 @@ public class CPUProducer extends Producer {
     private static volatile boolean running = true;
     
     public static int store_counter;
+    public JTextField CPUCounterDisplayer;
     
-    public CPUProducer(int salary, int time_sleep){
+    public CPUProducer(int salary, int time_sleep, JTextField CPUCounterDisplayer){
         super(salary, time_sleep);
+        this.store_counter = 0;
+        this.CPUCounterDisplayer = CPUCounterDisplayer;
      
     }
     
@@ -32,6 +36,16 @@ public class CPUProducer extends Producer {
         int storecapacity = STORE_CAPACITY;
         return storecapacity;
     }
+
+    public JTextField getCPUCounterDisplayer() {
+        return CPUCounterDisplayer;
+    }
+
+    public void setCPUCounterDisplayer(JTextField CPUCounterDisplayer) {
+        this.CPUCounterDisplayer = CPUCounterDisplayer;
+    }
+    
+    
 
     public static int getStore_counter() {
         return store_counter;
@@ -72,6 +86,8 @@ public class CPUProducer extends Producer {
     }
     
     
+    
+    
     @Override
     public synchronized void incrementCounter(){
         try {
@@ -79,6 +95,9 @@ public class CPUProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
+                
+                CPUCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                
                 System.out.println("CPU Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;

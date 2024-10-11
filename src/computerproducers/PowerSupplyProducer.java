@@ -22,16 +22,28 @@ public class PowerSupplyProducer extends Producer {
 
     
     public static int store_counter;
+    public JTextField powerSupplyCounterDisplayer;
     
     
-    public PowerSupplyProducer(int salary, int time_sleep){
+    public PowerSupplyProducer(int salary, int time_sleep, JTextField powerSupplyCounterDisplayer){
         super(salary, time_sleep);
+        this.store_counter = 0;
+        this.powerSupplyCounterDisplayer = powerSupplyCounterDisplayer;
     }
 
     public int getStore_capacity() {
         int storecapacity = STORE_CAPACITY;
         return storecapacity;
     }
+
+    public JTextField getPowerSupplyCounterDisplayer() {
+        return powerSupplyCounterDisplayer;
+    }
+
+    public void setPowerSupplyCounterDisplayer(JTextField powerSupplyCounterDisplayer) {
+        this.powerSupplyCounterDisplayer = powerSupplyCounterDisplayer;
+    }
+    
     
     public static Semaphore getSemaphore() {
         return semaphore;
@@ -82,6 +94,9 @@ public class PowerSupplyProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
+                
+                powerSupplyCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                        
                 System.out.println("Power Supply Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;

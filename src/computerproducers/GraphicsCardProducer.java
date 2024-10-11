@@ -4,6 +4,7 @@
  */
 package computerproducers;
 
+import static computerproducers.CPUProducer.store_counter;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,9 +21,12 @@ public class GraphicsCardProducer extends Producer {
     private static volatile boolean running = true;
   
     public static int store_counter;
+    public JTextField graphicsCounterDisplayer;
     
-    public GraphicsCardProducer(int salary, int time_sleep){
+    public GraphicsCardProducer(int salary, int time_sleep, JTextField graphicsCounterDisplayer){
         super(salary, time_sleep);
+        this.store_counter = 0;
+        this.graphicsCounterDisplayer = graphicsCounterDisplayer;
        
     }
     
@@ -31,6 +35,16 @@ public class GraphicsCardProducer extends Producer {
         return storecapacity;
     }
 
+    public JTextField getGraphicsCounterDisplayer() {
+        return graphicsCounterDisplayer;
+    }
+
+    public void setGraphicsCounterDisplayer(JTextField graphicsCounterDisplayer) {
+        this.graphicsCounterDisplayer = graphicsCounterDisplayer;
+    }
+    
+    
+    
     public static int getStore_counter() {
         return store_counter;
     }
@@ -80,6 +94,9 @@ public class GraphicsCardProducer extends Producer {
             if(store_counter < STORE_CAPACITY){
                 Thread.sleep(time_sleep);
                 store_counter++;
+                
+                graphicsCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                
                 System.out.println("Graphics Card Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
                 running = false;
