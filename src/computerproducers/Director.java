@@ -60,6 +60,7 @@ public class Director extends Thread{
                 e.printStackTrace();
             }
         }
+        remainingDays.setText(Integer.toString(daysRemaining));
 
         // Cuando el contador de días llega a 0, enviar computadoras
         System.out.println("Director enviando computadoras a las distribuidoras...");
