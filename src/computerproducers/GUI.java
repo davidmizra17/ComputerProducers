@@ -283,7 +283,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 140, -1));
 
         jLabel35.setText("DÍAS FALTANTES PARA LA ENTREGA");
-        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 190, 20));
+        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 230, 20));
 
         jLabel36.setText("COMPUTADORAS LISTAS");
         getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 130, 20));
@@ -513,7 +513,7 @@ public class GUI extends javax.swing.JFrame {
                 DaysLeftActionPerformed(evt);
             }
         });
-        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 50, 40));
+        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 50, 40));
 
         GraphicsCardComputerReadyHP.setEditable(false);
         GraphicsCardComputerReadyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);

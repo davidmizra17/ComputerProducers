@@ -20,7 +20,7 @@ public class CPUProducer extends Producer {
     
     public static final int STORE_CAPACITY = 20;
     private static Semaphore semaphore = new Semaphore(1);
-    private static volatile boolean running = true;
+    private volatile boolean running = true;
     
     public static int store_counter;
     public JTextField CPUCounterDisplayer;
@@ -55,8 +55,8 @@ public class CPUProducer extends Producer {
         CPUProducer.semaphore = semaphore;
     }
 
-    public static void setRunning(boolean running) {
-        CPUProducer.running = running;
+    public void setRunning(boolean running) {
+        this.running = running;
     }
 
     public static void setStore_counter(int store_counter) {

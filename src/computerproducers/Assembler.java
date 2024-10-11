@@ -37,8 +37,8 @@ public class Assembler extends Thread {
     private int power_supply_needed;
     
     //Text Fields GUI
-    public static JTextField standardComputerCounterDisplayer;
-    public static JTextField graphicCardComputerCounterDisplayer;
+    public JTextField standardComputerCounterDisplayer;
+    public JTextField graphicCardComputerCounterDisplayer;
 //    private JTextField RAMProduced;
 //    private JTextField CPUProduced;
 //    private JTextField PowerSupplyProduced;
@@ -194,12 +194,12 @@ public class Assembler extends Thread {
         this.power_supply_needed = power_supply_needed;
     }
 
-    public static JTextField getGraphicCardComputerCounterDisplayer() {
+    public JTextField getGraphicCardComputerCounterDisplayer() {
         return graphicCardComputerCounterDisplayer;
     }
 
-    public static void setGraphicCardComputerCounterDisplayer(JTextField graphicCardComputerCounterDisplayer) {
-        Assembler.graphicCardComputerCounterDisplayer = graphicCardComputerCounterDisplayer;
+    public void setGraphicCardComputerCounterDisplayer(JTextField graphicCardComputerCounterDisplayer) {
+        this.graphicCardComputerCounterDisplayer = graphicCardComputerCounterDisplayer;
     }
    
     
@@ -359,9 +359,11 @@ public class Assembler extends Thread {
             
             setStandardComputerCounter(getStandardComputerCounter() + 1);
             System.out.println("-----STANDARD COMPUTER COUNTER FROM ASSEMBLER-------: " + standardComputerCounter);
+            
             SwingUtilities.invokeLater(() -> {
                 standardComputerCounterDisplayer.setText(String.valueOf(standardComputerCounter));  
-                });
+            });
+            
             mutex.release();
        
     }
@@ -371,6 +373,10 @@ public class Assembler extends Thread {
             Thread.sleep(sleep_time);  
             
             setGraphicCardComputerCounter(getGraphicCardComputerCounter() + 1);
+            
+            SwingUtilities.invokeLater(() -> {
+                graphicCardComputerCounterDisplayer.setText(String.valueOf(getGraphicCardComputerCounter()));  
+            });
             
             mutex.release();
        
@@ -401,18 +407,12 @@ public void run(){
                 System.out.println("thread with id "+ Thread.currentThread().getName() + " has the current stadard computer count: " + getStandardComputerCounter());
                 
                 
-                if(standardComputerCounter == standardComputersNeeded){
+                if(standardComputerCounter == standardComputersNeeded || standardComputerCounter % standardComputersNeeded == 0){
                     //reset values, assemble computers with graphics cards and start count for regular computers again
-                    
                     //ASSEMBLE COMPUTER WITH GRAPHICS CARD
                     graphicsComputerAssembly();
                     incrementGraphicsComputerCount();
                     
-                    SwingUtilities.invokeLater(() -> {
-                graphicCardComputerCounterDisplayer.setText(String.valueOf(graphicCardComputers));  
-                });
-                    
-                   
                   
             }
                 Thread.yield();
