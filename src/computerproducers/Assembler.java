@@ -16,15 +16,15 @@ import javax.swing.SwingUtilities;
  */
 public class Assembler extends Thread {
     
-    private static final int STANDARD_COMPUTERS_NEEDED = 5;
-    private static final int GRAPHIC_CARD_COMPUTERS = 3;
+    private static int standardComputersNeeded;
+    private static int graphicCardComputers;
     
     //SEMAPHORE
     private static Semaphore mutex;
     
     //COUNTERS
     public static int standardComputerCounter;
-    private static int graphicCardComputerCounter;
+    public static int graphicCardComputerCounter;
     private int salary;
     private int sleep_time;
     
@@ -38,6 +38,7 @@ public class Assembler extends Thread {
     
     //Text Fields GUI
     public static JTextField standardComputerCounterDisplayer;
+    public static JTextField graphicCardComputerCounterDisplayer;
 //    private JTextField RAMProduced;
 //    private JTextField CPUProduced;
 //    private JTextField PowerSupplyProduced;
@@ -53,10 +54,23 @@ public class Assembler extends Thread {
 //        this.RAMProduced = new JTextField();
 //    }
     
-    public Assembler(int salary, int sleep_time, int ram_needed, int cpu_needed, int graphicCardsNeeded, int plaques_needed, int power_supply_needed, int standardComputersNeeded, int graphicCardComputers, JTextField standardComputerCounterDisplayer){
+    public Assembler(int salary, 
+                     int sleep_time, 
+                     int ram_needed, 
+                     int cpu_needed, 
+                     int graphicCardsNeeded, 
+                     int plaques_needed, 
+                     int power_supply_needed, 
+                     int standardComputersNeeded, 
+                     int graphicCardComputers, 
+                     JTextField standardComputerCounterDisplayer, 
+                     JTextField graphicCardComputerCounterDisplayer
+                     ){
         
         standardComputerCounter = 0;
         graphicCardComputerCounter = 0;
+        this.standardComputersNeeded = standardComputersNeeded;
+        this.graphicCardComputers = graphicCardComputers;
         this.salary = salary;
         this.sleep_time = sleep_time;
         
@@ -75,6 +89,7 @@ public class Assembler extends Thread {
         
         //VARIABLE JTEXTFIELD PARA MOSTRAR EN LA INTERFAZ DE USUARIO
         this.standardComputerCounterDisplayer = standardComputerCounterDisplayer;
+        this.graphicCardComputerCounterDisplayer = graphicCardComputerCounterDisplayer;
     }
         
         //Initializa JTextField Variables
@@ -122,8 +137,71 @@ public class Assembler extends Thread {
     public void setStandardComputerCounterDisplayer(JTextField standardComputerCounterDisplayer) {
         this.standardComputerCounterDisplayer = standardComputerCounterDisplayer;
     }
-    
-    
+
+    public static Semaphore getMutex() {
+        return mutex;
+    }
+
+    public static void setMutex(Semaphore mutex) {
+        Assembler.mutex = mutex;
+    }
+
+    public static int getGraphicCardComputerCounter() {
+        return graphicCardComputerCounter;
+    }
+
+    public static void setGraphicCardComputerCounter(int graphicCardComputerCounter) {
+        Assembler.graphicCardComputerCounter = graphicCardComputerCounter;
+    }
+
+    public int getRam_needed() {
+        return ram_needed;
+    }
+
+    public void setRam_needed(int ram_needed) {
+        this.ram_needed = ram_needed;
+    }
+
+    public int getCpu_needed() {
+        return cpu_needed;
+    }
+
+    public void setCpu_needed(int cpu_needed) {
+        this.cpu_needed = cpu_needed;
+    }
+
+    public int getGraphicCardsNeeded() {
+        return graphicCardsNeeded;
+    }
+
+    public void setGraphicCardsNeeded(int graphicCardsNeeded) {
+        this.graphicCardsNeeded = graphicCardsNeeded;
+    }
+
+    public int getPlaques_needed() {
+        return plaques_needed;
+    }
+
+    public void setPlaques_needed(int plaques_needed) {
+        this.plaques_needed = plaques_needed;
+    }
+
+    public int getPower_supply_needed() {
+        return power_supply_needed;
+    }
+
+    public void setPower_supply_needed(int power_supply_needed) {
+        this.power_supply_needed = power_supply_needed;
+    }
+
+    public static JTextField getGraphicCardComputerCounterDisplayer() {
+        return graphicCardComputerCounterDisplayer;
+    }
+
+    public static void setGraphicCardComputerCounterDisplayer(JTextField graphicCardComputerCounterDisplayer) {
+        Assembler.graphicCardComputerCounterDisplayer = graphicCardComputerCounterDisplayer;
+    }
+   
     
     public int getComputer_counter() {
         return standardComputerCounter;
@@ -280,6 +358,19 @@ public class Assembler extends Thread {
             Thread.sleep(sleep_time);  
             
             setStandardComputerCounter(getStandardComputerCounter() + 1);
+            System.out.println("-----STANDARD COMPUTER COUNTER FROM ASSEMBLER-------: " + standardComputerCounter);
+            SwingUtilities.invokeLater(() -> {
+                standardComputerCounterDisplayer.setText(String.valueOf(standardComputerCounter));  
+                });
+            mutex.release();
+       
+    }
+    public void incrementGraphicsComputerCount() throws InterruptedException{
+            
+            mutex.acquire();
+            Thread.sleep(sleep_time);  
+            
+            setGraphicCardComputerCounter(getGraphicCardComputerCounter() + 1);
             
             mutex.release();
        
@@ -305,21 +396,26 @@ public void run(){
                 
                 
 //               
-                 standardComputerAssembly();
+                standardComputerAssembly();
                 incrementStandardComputerCount();
                 System.out.println("thread with id "+ Thread.currentThread().getName() + " has the current stadard computer count: " + getStandardComputerCounter());
-                Thread.yield();
-                SwingUtilities.invokeLater(() -> {
-                standardComputerCounterDisplayer.setText(String.valueOf(standardComputerCounter));  
-                });
-//                if(standardComputerCounter == STANDARD_COMPUTERS_NEEDED){
-//                    //reset values, assemble computers with graphics cards and start count for regular computers again
-//                    resetValues();
-//                    //ASSEMBLE COMPUTER WITH GRAPHICS CARD
-//                    graphicCardComputerCounter+= graphicsComputerAssembly();
-                  
-//            }
                 
+                
+                if(standardComputerCounter == standardComputersNeeded){
+                    //reset values, assemble computers with graphics cards and start count for regular computers again
+                    
+                    //ASSEMBLE COMPUTER WITH GRAPHICS CARD
+                    graphicsComputerAssembly();
+                    incrementGraphicsComputerCount();
+                    
+                    SwingUtilities.invokeLater(() -> {
+                graphicCardComputerCounterDisplayer.setText(String.valueOf(graphicCardComputers));  
+                });
+                    
+                   
+                  
+            }
+                Thread.yield();
                
 
 

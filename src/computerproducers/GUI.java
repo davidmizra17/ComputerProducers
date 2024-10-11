@@ -531,7 +531,7 @@ public class GUI extends javax.swing.JFrame {
                 StandardComputerReadyDellActionPerformed(evt);
             }
         });
-        getContentPane().add(StandardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 30, -1));
+        getContentPane().add(StandardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 70, -1));
 
         GraphicsCardComputerReadyDell.setEditable(false);
         GraphicsCardComputerReadyDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -540,7 +540,7 @@ public class GUI extends javax.swing.JFrame {
                 GraphicsCardComputerReadyDellActionPerformed(evt);
             }
         });
-        getContentPane().add(GraphicsCardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 30, -1));
+        getContentPane().add(GraphicsCardComputerReadyDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 70, -1));
 
         DirectorActivityDell.setEditable(false);
         DirectorActivityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1030,8 +1030,8 @@ public class GUI extends javax.swing.JFrame {
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerDell = new Assembler(50, 700, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell);
-                assemblerDell.setPriority(MAX_PRIORITY);
+                Assembler assemblerDell = new Assembler(50, 700, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell, GraphicsCardComputerReadyDell);
+//                assemblerDell.setPriority(MAX_PRIORITY);
                 assemblerDell.start();
                 
             }
@@ -1152,13 +1152,14 @@ public class GUI extends javax.swing.JFrame {
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerHP = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3, StandardComputerReadyHP);
-                assemblerHP.setPriority(MAX_PRIORITY);
+                Assembler assemblerHP = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3, StandardComputerReadyHP, GraphicsCardComputerReadyHP);
+//                assemblerHP.setPriority(MAX_PRIORITY);
                 assemblerHP.start();
             }
             
             ProjectManager hp_pm = new ProjectManager(5, 550, PMActivityHP);
             hp_pm.start();
+            
             Director hp_director = new Director(hp_pm,10,PMDiscountHP,PMFaultsHP,DaysLeft,DirectorActivityHP);
             hp_director.start();
             
