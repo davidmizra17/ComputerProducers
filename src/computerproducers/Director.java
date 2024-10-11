@@ -17,6 +17,8 @@ public class Director extends Thread{
    
     private ProjectManager pm;
     private int daysRemaining;
+//    private int standardcomputerprice;
+//    private int graphicscardcomputerprice;
     private final int payRate = 60;
     private boolean salaryDeducted = false;
     private Random random = new Random();
@@ -24,6 +26,7 @@ public class Director extends Thread{
     private JTextField faultCounter;
     private JTextField remainingDays;
     private JTextField directorActivity;
+    private JTextField ventaComputadores;
     private int faultAccumulation;
     private int totalFaults;
 
@@ -34,6 +37,9 @@ public class Director extends Thread{
         this.faultCounter = faultCounter;
         this.remainingDays = remainingDays;
         this.directorActivity = directorActivity;
+//        this.ventaComputadores = ventaComputadores;
+//        this.standardcomputerprice = standardcomputerprice;
+//        this.graphicscardcomputerprice = graphicscardcomputerprice;
         this.faultAccumulation = 0;
         this.totalFaults = 0;
     }
@@ -61,6 +67,10 @@ public class Director extends Thread{
             }
         }
         remainingDays.setText(Integer.toString(daysRemaining));
+        
+//        if(daysRemaining == 0){
+//            ventaComputadores.setText(Integer.toString((standardcomputerprice*(Integer.parseInt(StandardComputerReadyHP.getText())))+(graphicscardcomputerprice*(Integer.parseInt(GraphicsCardComputerReadyHP.getText())))));
+//        }
 
         // Cuando el contador de días llega a 0, enviar computadoras
         System.out.println("Director enviando computadoras a las distribuidoras...");

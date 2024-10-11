@@ -26,6 +26,7 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     private static final int MAX_AMOUNT = 18;
+    private int diasTotales = 7;
     public GUI() {
         initComponents();
     }
@@ -158,7 +159,11 @@ public class GUI extends javax.swing.JFrame {
         PMDiscountHP = new javax.swing.JTextField();
         PMActivityHP = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
-        jScrollBar1 = new javax.swing.JScrollBar();
+        SalariosHP = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        VentaComputadoresHP = new javax.swing.JTextField();
+        SalariosDell = new javax.swing.JTextField();
+        VentaComputadoresDell = new javax.swing.JTextField();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -176,13 +181,13 @@ public class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(startSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
-        resetValues.setText("Colocar nuevos valores");
+        resetValues.setText("Colocar dias");
         resetValues.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetValuesActionPerformed(evt);
             }
         });
-        getContentPane().add(resetValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
+        getContentPane().add(resetValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
 
         jLabel2.setText("DELL");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 40, 20));
@@ -237,8 +242,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel23.setText("FUENTE DE ALIMENTACIÓN");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, 140, -1));
 
-        jLabel11.setText("PRODUCTORES");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 100, 20));
+        jLabel11.setText("Salarios");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 50, 20));
 
         jLabel12.setText("HP");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 30, 20));
@@ -513,7 +518,7 @@ public class GUI extends javax.swing.JFrame {
                 DaysLeftActionPerformed(evt);
             }
         });
-        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 50, 40));
+        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, 50, 40));
 
         GraphicsCardComputerReadyHP.setEditable(false);
         GraphicsCardComputerReadyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -964,11 +969,52 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel53.setText("COMPUTADORAS LISTAS");
         getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 130, 20));
-        getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, -1, 950));
+
+        SalariosHP.setEditable(false);
+        SalariosHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SalariosHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalariosHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SalariosHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 50, 40));
+
+        jLabel15.setText("Venta computadores");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 100, 20));
+
+        VentaComputadoresHP.setEditable(false);
+        VentaComputadoresHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        VentaComputadoresHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentaComputadoresHPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(VentaComputadoresHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 50, 40));
+
+        SalariosDell.setEditable(false);
+        SalariosDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        SalariosDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalariosDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SalariosDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 50, 40));
+
+        VentaComputadoresDell.setEditable(false);
+        VentaComputadoresDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        VentaComputadoresDell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentaComputadoresDellActionPerformed(evt);
+            }
+        });
+        getContentPane().add(VentaComputadoresDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 50, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void startSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimulationActionPerformed
         // TODO add your handling code here:
         
@@ -993,6 +1039,9 @@ public class GUI extends javax.swing.JFrame {
         int total_workers = amount_of_plaque_producers + amount_of_graphicCard_producers + amount_of_powerSupply_producers + amount_of_ram_producers + amount_of_cpu_producers;
         
         if (amount_of_plaque_producers > 0 && total_workers <= MAX_AMOUNT) {
+            
+            SalariosDell.setText(Integer.toString(24*diasTotales*((amount_of_plaque_producers*20)+(amount_of_cpu_producers*26)+(amount_of_ram_producers*40)+(amount_of_powerSupply_producers*16)+(amount_of_graphicCard_producers*34)+(amount_of_assemblers*50))));
+            
             for (int i = 0; i < amount_of_plaque_producers; i++) {
                 PlaqueProducer worker = new PlaqueProducer(25, 500, PlaqueDell);
                 worker.start();
@@ -1030,7 +1079,7 @@ public class GUI extends javax.swing.JFrame {
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerDell = new Assembler(50, 700, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell, GraphicsCardComputerReadyDell);
+                Assembler assemblerDell = new Assembler(50, 700, 6, 5, 3, 1, 5, 3, 1, 80000, 120000, StandardComputerReadyDell, GraphicsCardComputerReadyDell, VentaComputadoresDell);
 //                assemblerDell.setPriority(MAX_PRIORITY);
                 assemblerDell.start();
                 
@@ -1038,7 +1087,7 @@ public class GUI extends javax.swing.JFrame {
             
             ProjectManager dell_pm = new ProjectManager(5, 550, PMActivityDell);
             dell_pm.start();
-            Director dell_director = new Director(dell_pm,10,PMDiscountDell,PMFaultsDell,DaysLeft,DirectorActivityDell);
+            Director dell_director = new Director(dell_pm,diasTotales,PMDiscountDell,PMFaultsDell,DaysLeft,DirectorActivityDell);
             dell_director.start();
             
          }else if (amount_of_plaque_producers <= 0){
@@ -1076,6 +1125,7 @@ public class GUI extends javax.swing.JFrame {
             br.close();
         initializeDELLWorkers(valoresProductores);
         initializeHPWorkers(valoresProductores);
+        
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -1115,7 +1165,11 @@ public class GUI extends javax.swing.JFrame {
         int amount_of_cpu_producers = valoresProductores.get("cpuHP");
         int amount_of_assemblers = valoresProductores.get("ensambladoresHP");
         
+        
         if (amount_of_plaque_producers > 0) {
+            
+            SalariosHP.setText(Integer.toString(24*diasTotales*((amount_of_plaque_producers*20)+(amount_of_cpu_producers*26)+(amount_of_ram_producers*40)+(amount_of_powerSupply_producers*16)+(amount_of_graphicCard_producers*34)+(amount_of_assemblers*50))));
+            
             for (int i = 0; i < amount_of_plaque_producers; i++) {
                 PlaqueProducer worker = new PlaqueProducer(25, 500, PlaqueHP);
                 worker.start();
@@ -1152,7 +1206,7 @@ public class GUI extends javax.swing.JFrame {
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerHP = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3, StandardComputerReadyHP, GraphicsCardComputerReadyHP);
+                Assembler assemblerHP = new Assembler(50, 2000, 2, 1, 3, 1, 4, 2, 3, 90000, 140000, StandardComputerReadyHP, GraphicsCardComputerReadyHP, VentaComputadoresHP);
 //                assemblerHP.setPriority(MAX_PRIORITY);
                 assemblerHP.start();
             }
@@ -1160,9 +1214,13 @@ public class GUI extends javax.swing.JFrame {
             ProjectManager hp_pm = new ProjectManager(5, 550, PMActivityHP);
             hp_pm.start();
             
-            Director hp_director = new Director(hp_pm,10,PMDiscountHP,PMFaultsHP,DaysLeft,DirectorActivityHP);
+            Director hp_director = new Director(hp_pm,diasTotales,PMDiscountHP,PMFaultsHP,DaysLeft,DirectorActivityHP);
             hp_director.start();
             
+            
+//            if((Integer.parseInt(DaysLeft.getText())) == 0){
+//                VentaComputadoresHP.setText(Integer.toString((90000*(Integer.parseInt(StandardComputerReadyHP.getText())))+(140000*(Integer.parseInt(GraphicsCardComputerReadyHP.getText())))));
+//        }
          }else{
             JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
         }
@@ -1175,24 +1233,25 @@ public class GUI extends javax.swing.JFrame {
     
     private void resetValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetValuesActionPerformed
         // TODO add your handling code here:
-        int inputDuracionDias = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tiempo que dura un dia en segundos: "));
+//        int inputDuracionDias = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tiempo que dura un dia en segundos: "));
         int inputCantidadDias = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de dias entre las entregas de las computadoras a las distribuidoras: "));
+        diasTotales = inputCantidadDias;
         
-//      Dell
-        int inputPlaqueProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de Dell: "));
-        int inputCPUProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de Dell: "));
-        int inputRAMProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de Dell: "));
-        int inputPowerSupplyProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de Dell: "));
-        int inputGaphicsCardProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de Dell: "));
-        int inputAssemblersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de Dell: "));
-        
-//      HP
-        int inputPlaqueProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de HP: "));
-        int inputCPUProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de HP: "));
-        int inputRAMProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de HP: "));
-        int inputPowerSupplyProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de HP: "));
-        int inputGaphicsCardProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de HP: "));
-        int inputAssemblersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de HP: "));
+////      Dell
+//        int inputPlaqueProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de Dell: "));
+//        int inputCPUProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de Dell: "));
+//        int inputRAMProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de Dell: "));
+//        int inputPowerSupplyProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de Dell: "));
+//        int inputGaphicsCardProducersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de Dell: "));
+//        int inputAssemblersDell = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de Dell: "));
+//        
+////      HP
+//        int inputPlaqueProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de placa base de HP: "));
+//        int inputCPUProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de CPU de HP: "));
+//        int inputRAMProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de RAM de HP: "));
+//        int inputPowerSupplyProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de fuentes de alimentacion de HP: "));
+//        int inputGaphicsCardProducersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de productores de tarjetas graficas de HP: "));
+//        int inputAssemblersHP = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de ensambladores de HP: "));
 
     
     }//GEN-LAST:event_resetValuesActionPerformed
@@ -1769,6 +1828,22 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PMActivityHPActionPerformed
 
+    private void SalariosHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalariosHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SalariosHPActionPerformed
+
+    private void VentaComputadoresHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaComputadoresHPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VentaComputadoresHPActionPerformed
+
+    private void SalariosDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalariosDellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SalariosDellActionPerformed
+
+    private void VentaComputadoresDellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaComputadoresDellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VentaComputadoresDellActionPerformed
+
     /**
      * 
      * @param args the command line arguments
@@ -1849,8 +1924,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField RAMHP;
     private javax.swing.JTextField RAMProducerDell;
     private javax.swing.JTextField RAMProducerHP;
+    private javax.swing.JTextField SalariosDell;
+    private javax.swing.JTextField SalariosHP;
     private javax.swing.JTextField StandardComputerReadyDell;
     private javax.swing.JTextField StandardComputerReadyHP;
+    private javax.swing.JTextField VentaComputadoresDell;
+    private javax.swing.JTextField VentaComputadoresHP;
     private javax.swing.JButton decreaseAssemblerDELL;
     private javax.swing.JButton decreaseAssemblerHP;
     private javax.swing.JButton decreaseCpuDELL;
@@ -1880,6 +1959,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1922,7 +2002,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton resetValues;
     private javax.swing.JButton startSimulation;

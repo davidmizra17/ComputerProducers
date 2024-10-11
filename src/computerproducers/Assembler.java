@@ -25,6 +25,8 @@ public class Assembler extends Thread {
     //COUNTERS
     public static int standardComputerCounter;
     public static int graphicCardComputerCounter;
+    public static int standardcomputerprice;
+    public static int graphiccardcomputerprice;
     private int salary;
     private int sleep_time;
     
@@ -39,6 +41,7 @@ public class Assembler extends Thread {
     //Text Fields GUI
     public static JTextField standardComputerCounterDisplayer;
     public static JTextField graphicCardComputerCounterDisplayer;
+    public static JTextField ventaComputador;
 //    private JTextField RAMProduced;
 //    private JTextField CPUProduced;
 //    private JTextField PowerSupplyProduced;
@@ -63,8 +66,11 @@ public class Assembler extends Thread {
                      int power_supply_needed, 
                      int standardComputersNeeded, 
                      int graphicCardComputers, 
+                     int standardcomputerprice,
+                     int graphiccardcomputerprice,
                      JTextField standardComputerCounterDisplayer, 
-                     JTextField graphicCardComputerCounterDisplayer
+                     JTextField graphicCardComputerCounterDisplayer,
+                     JTextField ventaComputador
                      ){
         
         standardComputerCounter = 0;
@@ -75,7 +81,8 @@ public class Assembler extends Thread {
         this.sleep_time = sleep_time;
         
         //COUNTERS
-        
+        this.standardcomputerprice = standardcomputerprice;
+        this.graphiccardcomputerprice = graphiccardcomputerprice;
         
         //HARDWARE REQUIREMENTS
         this.ram_needed = ram_needed;
@@ -90,6 +97,7 @@ public class Assembler extends Thread {
         //VARIABLE JTEXTFIELD PARA MOSTRAR EN LA INTERFAZ DE USUARIO
         this.standardComputerCounterDisplayer = standardComputerCounterDisplayer;
         this.graphicCardComputerCounterDisplayer = graphicCardComputerCounterDisplayer;
+        this.ventaComputador = ventaComputador;
     }
         
         //Initializa JTextField Variables
@@ -411,6 +419,8 @@ public void run(){
                     SwingUtilities.invokeLater(() -> {
                 graphicCardComputerCounterDisplayer.setText(String.valueOf(graphicCardComputers));  
                 });
+                    
+                ventaComputador.setText(Integer.toString((standardcomputerprice*standardComputerCounter)+(graphiccardcomputerprice*graphicCardComputerCounter)));
                     
                    
                   
