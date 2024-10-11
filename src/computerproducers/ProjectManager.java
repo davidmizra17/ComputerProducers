@@ -7,6 +7,7 @@ package computerproducers;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -16,25 +17,78 @@ public class ProjectManager extends Thread{
     
     private int remainingDays;
     private int sleep_time; 
+    private int accumulatedTime;
+    private final int workHoursPerDay = 8;
+    private final int animeAndWorkHours = 16;
+    private final int payRate = 40;
+    private boolean workingDayOver = false;
+    private boolean watchingAnime = false;
+    private int salaryDeduction;
     
     private JTextField DaysLeft;
+    private JTextField activity;
     
     public ProjectManager(){
         this.DaysLeft = new JTextField();
     }
     
-    public ProjectManager(int remainingDays, int sleep_time){
+    public ProjectManager(int remainingDays, int sleep_time, JTextField PMActivity){
         
-        this.remainingDays = 4;
+        this.remainingDays = remainingDays;
         this.sleep_time = sleep_time;
         
         this.DaysLeft = new JTextField();
+        this.activity = PMActivity;
+        this.salaryDeduction = 0;
         
     }
 
+    public JTextField getActivity() {
+        return activity;
+    }
+
+    public boolean isWorkingDayOver() {
+        return workingDayOver;
+    }
+
+    public void setWorkingDayOver(boolean workingDayOver) {
+        this.workingDayOver = workingDayOver;
+    }
+
+    public boolean isWatchingAnime() {
+        return watchingAnime;
+    }
+
+    public void setWatchingAnime(boolean watchingAnime) {
+        this.watchingAnime = watchingAnime;
+    }
+    
+    public int deductSalary(int fault){
+        salaryDeduction+= fault;
+        return salaryDeduction;
+    }
+    
+
+    public void setActivity(JTextField activity) {
+        this.activity = activity;
+    }
+    
     public void setDaysLeft(JTextField DaysLeft) {
         this.DaysLeft = DaysLeft;
     }
+
+    public JTextField getDaysLeft() {
+        return DaysLeft;
+    }
+
+    public int getAccumulatedTime() {
+        return accumulatedTime;
+    }
+
+    public void setAccumulatedTime(int accumulatedTime) {
+        this.accumulatedTime = accumulatedTime;
+    }
+    
     
     public int getRemainingDays() {
         return remainingDays;
@@ -52,38 +106,78 @@ public class ProjectManager extends Thread{
         this.sleep_time = sleep_time;
     }
     
+    public int getPayForDay() {
+        return (workHoursPerDay + animeAndWorkHours) * payRate;
+    }
     
     
     @Override
     public void run(){
         while(true){
-            try {
-                //ESTADO: viendo anime
-                Thread.sleep(30);
-                //ESTADO: trabajando
-                remainingDays-= 1;
-                Thread.sleep(30);
+//            if (getRemainingDays() >= 1) {
+//                setRemainingDays(getRemainingDays() - 1);
+//            }
+            while (remainingDays > 0) {
+                // Durante las primeras 16 horas: Ver anime y revisar el proyecto
+//                SwingUtilities.invokeLater(() -> {
+//                for (int i = 0; i < animeAndWorkHours * 2; i++) { // 16 horas en intervalos de 30 min (32 iteraciones)
+//                    if (i % 2 == 0) { // 30 min viendo anime
+//                        activity.setText("VIENDO ANIME");
+//                        System.out.println("------------VIENDO ANIME EL PROJECT MANAGER-------------------");
+//                    } else { // 30 min revisando proyecto
+//                        activity.setText("TRABAJANDO");
+//                        System.out.println("------------TRABAJANDOOOOO EL PROJECT MANAGER-------------------");
+//                    }
+//                }
+//                });
+
+                int accumulator = 0;
+                while(accumulator < 32){
+                    try {
+                        Thread.sleep(3000);
+                        activity.setText("VIENDO ANIME");
+                        
+                        setWatchingAnime(true);
+                        Thread.sleep(3000);
+                        
+                        activity.setText("TRABAJANDO");
+                        setWatchingAnime(false);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
                 
-                DaysLeft.setText(Integer.toString(remainingDays));
                 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+                
+                for (int i = 0; i < workHoursPerDay; i++) {
+                    updateDaysRemaining();
+                    try {
+                        Thread.sleep((long) (24 * 0.0208)); // Simula una hora de trabajo
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                remainingDays--; // Reduce un día
             }
+            workingDayOver = true;
+            //ESTADO: viendo anime
+//                if(getAccumulatedTime() < getSixteenHourTimeLapse)
+//                activity.setText("Viendo Anime");
+//                Thread.sleep(sleep_time);
+//                //ESTADO: trabajando
+//                activity.setText("Trabajando");
+//                remainingDays-= 1;
+//                Thread.sleep(sleep_time);
+DaysLeft.setText(Integer.toString(remainingDays));
             
             
         }
     }
-    
-    //---------------------------------------------FIRST STAGE---------------------------------------------
-    
-//    Project Manager: Solo hay uno por cada compañía, y su trabajo es registrar  el paso de los días. 
-//            Tiene acceso a un contador con los días restantes para la entrega de los computadores terminados. 
-    
-//    ---------------------------------------------SECOND STAGE---------------------------------------------
-//            Sin embargo, al PM se le conoce por  su fanatismo al anime (Está al día con One Piece), 
-//                    a tal punto que las  primeras 16 horas del día logra ver anime a escondidas. 
-//                    Cada intervalo de  30 minutos ve anime, y los siguientes 30 minutos trabaja revisando el  avance del proyecto, 
-//                    siguiendo el ciclo durante las primeras 16 horas del día.  
-//                    Las últimas 8 horas del día las invierte cambiando el contador con los días  restantes para la entrega. 
-//                    El PM cobra $40 la hora esté trabajando o esté  viendo anime.  
+
+    private void updateDaysRemaining() {
+        System.out.println("PM actualizando días restantes: " + remainingDays);
+    }
 }
+

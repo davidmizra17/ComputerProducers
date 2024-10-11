@@ -546,7 +546,7 @@ public class GUI extends javax.swing.JFrame {
                 PMFaultsActionPerformed(evt);
             }
         });
-        getContentPane().add(PMFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 30, -1));
+        getContentPane().add(PMFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 80, -1));
 
         PMDiscount.setEditable(false);
         PMDiscount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -555,7 +555,7 @@ public class GUI extends javax.swing.JFrame {
                 PMDiscountActionPerformed(evt);
             }
         });
-        getContentPane().add(PMDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 30, -1));
+        getContentPane().add(PMDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 80, -1));
 
         PMActivity.setEditable(false);
         PMActivity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -564,7 +564,7 @@ public class GUI extends javax.swing.JFrame {
                 PMActivityActionPerformed(evt);
             }
         });
-        getContentPane().add(PMActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 30, -1));
+        getContentPane().add(PMActivity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 210, -1));
 
         decreasePlaqueDELL.setText("-");
         decreasePlaqueDELL.addActionListener(new java.awt.event.ActionListener() {
@@ -961,6 +961,9 @@ public class GUI extends javax.swing.JFrame {
                 assemblerDell.start();
                 
             }
+            
+            ProjectManager dell_pm = new ProjectManager(5, 550, PMActivity);
+            dell_pm.start();
             
          }else if (amount_of_plaque_producers <= 0){
             JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
