@@ -22,14 +22,18 @@ public class Director extends Thread{
     private Random random = new Random();
     private JTextField faultDisplay;
     private JTextField faultCounter;
+    private JTextField remainingDays;
+    private JTextField directorActivity;
     private int faultAccumulation;
     private int totalFaults;
 
-    public Director(ProjectManager pm, int daysRemaining, JTextField faultDisplay, JTextField faultCounter) {
+    public Director(ProjectManager pm, int daysRemaining, JTextField faultDisplay, JTextField faultCounter, JTextField remainingDays, JTextField directorActivity) {
         this.pm = pm;
         this.daysRemaining = daysRemaining;
         this.faultDisplay = faultDisplay;
         this.faultCounter = faultCounter;
+        this.remainingDays = remainingDays;
+        this.directorActivity = directorActivity;
         this.faultAccumulation = 0;
         this.totalFaults = 0;
     }
@@ -37,13 +41,16 @@ public class Director extends Thread{
     public void run() {
         while (daysRemaining > 0) {
             try {
+                remainingDays.setText(Integer.toString(daysRemaining));
                 System.out.println("Director trabajando en tareas administrativas.");
+                directorActivity.setText("Director trabajando en tareas administrativas.");
                 
                 // Revisión aleatoria al PM
                 int randomHour = random.nextInt(24); // Hora aleatoria del día
                 Thread.sleep(randomHour * 24); // Espera hasta la hora aleatoria
                 
                 System.out.println("Director revisando al PM en la hora: " + randomHour);
+                directorActivity.setText("Director revisando al PM en la hora: " + randomHour);
                 monitorProjectManager(); // Revisa si el PM está viendo anime
                 
                 Thread.sleep(24 - randomHour); // Termina el día después de la revisión

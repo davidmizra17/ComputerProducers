@@ -158,6 +158,7 @@ public class GUI extends javax.swing.JFrame {
         PMDiscountHP = new javax.swing.JTextField();
         PMActivityHP = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
+        jScrollBar1 = new javax.swing.JScrollBar();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -210,7 +211,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 360, 30, 20));
 
         jLabel9.setText("PROJECT MANAGER");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, 130, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 130, 20));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("ENSAMBLADORES");
@@ -282,7 +283,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 140, -1));
 
         jLabel35.setText("DÍAS FALTANTES PARA LA ENTREGA");
-        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 850, 190, 20));
+        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 190, 20));
 
         jLabel36.setText("COMPUTADORAS LISTAS");
         getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 130, 20));
@@ -292,7 +293,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("DESCUENTO");
-        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 680, 140, -1));
+        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 140, -1));
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("ACTIVIDAD");
@@ -300,11 +301,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setText("FALTAS");
-        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 140, -1));
+        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, 140, -1));
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("ACTIVIDAD");
-        getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, 140, -1));
+        getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 620, 140, -1));
 
         RAMProducerDell.setEditable(false);
         RAMProducerDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -512,7 +513,7 @@ public class GUI extends javax.swing.JFrame {
                 DaysLeftActionPerformed(evt);
             }
         });
-        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 850, 50, 40));
+        getContentPane().add(DaysLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 50, 40));
 
         GraphicsCardComputerReadyHP.setEditable(false);
         GraphicsCardComputerReadyHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -548,7 +549,7 @@ public class GUI extends javax.swing.JFrame {
                 DirectorActivityDellActionPerformed(evt);
             }
         });
-        getContentPane().add(DirectorActivityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 760, 210, -1));
+        getContentPane().add(DirectorActivityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 760, 280, -1));
 
         PMFaultsDell.setEditable(false);
         PMFaultsDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -557,7 +558,7 @@ public class GUI extends javax.swing.JFrame {
                 PMFaultsDellActionPerformed(evt);
             }
         });
-        getContentPane().add(PMFaultsDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, 80, -1));
+        getContentPane().add(PMFaultsDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 640, 80, -1));
 
         PMDiscountDell.setEditable(false);
         PMDiscountDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -566,7 +567,7 @@ public class GUI extends javax.swing.JFrame {
                 PMDiscountDellActionPerformed(evt);
             }
         });
-        getContentPane().add(PMDiscountDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 680, 80, -1));
+        getContentPane().add(PMDiscountDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, 80, -1));
 
         PMActivityDell.setEditable(false);
         PMActivityDell.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -575,7 +576,7 @@ public class GUI extends javax.swing.JFrame {
                 PMActivityDellActionPerformed(evt);
             }
         });
-        getContentPane().add(PMActivityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 640, 210, -1));
+        getContentPane().add(PMActivityDell, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 210, -1));
 
         decreasePlaqueDELL.setText("-");
         decreasePlaqueDELL.addActionListener(new java.awt.event.ActionListener() {
@@ -904,14 +905,14 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 140, -1));
 
         jLabel13.setText("PROJECT MANAGER");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 130, 20));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 590, 130, 20));
 
         jLabel48.setText("DIRECTOR");
         getContentPane().add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 730, 130, 20));
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("DESCUENTO");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 680, 140, -1));
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 660, 140, -1));
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel50.setText("ACTIVIDAD");
@@ -919,11 +920,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel51.setText("FALTAS");
-        getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 660, 140, -1));
+        getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, 140, -1));
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel52.setText("ACTIVIDAD");
-        getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, 140, -1));
+        getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, 140, -1));
 
         DirectorActivityHP.setEditable(false);
         DirectorActivityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -932,7 +933,7 @@ public class GUI extends javax.swing.JFrame {
                 DirectorActivityHPActionPerformed(evt);
             }
         });
-        getContentPane().add(DirectorActivityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 760, 210, -1));
+        getContentPane().add(DirectorActivityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 760, 230, -1));
 
         PMFaultsHP.setEditable(false);
         PMFaultsHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -941,7 +942,7 @@ public class GUI extends javax.swing.JFrame {
                 PMFaultsHPActionPerformed(evt);
             }
         });
-        getContentPane().add(PMFaultsHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 660, 80, -1));
+        getContentPane().add(PMFaultsHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 640, 80, -1));
 
         PMDiscountHP.setEditable(false);
         PMDiscountHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -950,7 +951,7 @@ public class GUI extends javax.swing.JFrame {
                 PMDiscountHPActionPerformed(evt);
             }
         });
-        getContentPane().add(PMDiscountHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 680, 80, -1));
+        getContentPane().add(PMDiscountHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 660, 80, -1));
 
         PMActivityHP.setEditable(false);
         PMActivityHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -959,10 +960,11 @@ public class GUI extends javax.swing.JFrame {
                 PMActivityHPActionPerformed(evt);
             }
         });
-        getContentPane().add(PMActivityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 640, 210, -1));
+        getContentPane().add(PMActivityHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 210, -1));
 
         jLabel53.setText("COMPUTADORAS LISTAS");
         getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 130, 20));
+        getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, -1, 950));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1036,6 +1038,8 @@ public class GUI extends javax.swing.JFrame {
             
             ProjectManager dell_pm = new ProjectManager(5, 550, PMActivityDell);
             dell_pm.start();
+            Director dell_director = new Director(dell_pm,10,PMDiscountDell,PMFaultsDell,DaysLeft,DirectorActivityDell);
+            dell_director.start();
             
          }else if (amount_of_plaque_producers <= 0){
             JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
@@ -1155,6 +1159,8 @@ public class GUI extends javax.swing.JFrame {
             
             ProjectManager hp_pm = new ProjectManager(5, 550, PMActivityHP);
             hp_pm.start();
+            Director hp_director = new Director(hp_pm,10,PMDiscountHP,PMFaultsHP,DaysLeft,DirectorActivityHP);
+            hp_director.start();
             
          }else{
             JOptionPane.showMessageDialog(rootPane, "ERROR: Debe ingresar un número positivo.");
@@ -1915,6 +1921,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton resetValues;
     private javax.swing.JButton startSimulation;
