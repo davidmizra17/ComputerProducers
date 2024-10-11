@@ -89,7 +89,7 @@ public class PlaqueProducer extends Producer {
                 Thread.sleep(time_sleep);
                 store_counter++;
                 
-                plaqueCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                if(getStore_counter() >= 0)plaqueCounterDisplayer.setText(String.valueOf(getStore_counter()));
                 
                 System.out.println("Plaques Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
                 

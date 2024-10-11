@@ -91,11 +91,11 @@ public class PowerSupplyProducer extends Producer {
      public synchronized void incrementCounter(){
         try {
             semaphore.acquire();
-            if(store_counter < STORE_CAPACITY){
+            if(store_counter < 35){
                 Thread.sleep(time_sleep);
                 store_counter++;
                 
-                powerSupplyCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                if(getStore_counter() >= 0)powerSupplyCounterDisplayer.setText(String.valueOf(getStore_counter()));
                         
                 System.out.println("Power Supply Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{

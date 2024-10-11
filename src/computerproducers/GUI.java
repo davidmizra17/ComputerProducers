@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import static java.lang.Thread.MAX_PRIORITY;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 
@@ -955,8 +956,10 @@ public class GUI extends javax.swing.JFrame {
             }
             
             for (int i = 0; i < amount_of_assemblers; i++) {
-                Assembler assemblerDell = new Assembler(50, 2000, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell);
+                Assembler assemblerDell = new Assembler(50, 700, 6, 5, 3, 1, 5, 3, 1, StandardComputerReadyDell);
+                assemblerDell.setPriority(MAX_PRIORITY);
                 assemblerDell.start();
+                
             }
             
          }else if (amount_of_plaque_producers <= 0){

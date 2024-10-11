@@ -100,7 +100,7 @@ public class RAMProducer extends Producer{
                 Thread.sleep(time_sleep);
                 store_counter++;
                 
-                RAMCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                if(getStore_counter() >= 0)RAMCounterDisplayer.setText(String.valueOf(getStore_counter()));
                 
                 System.out.println("RAM Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{

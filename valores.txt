@@ -1,9 +1,9 @@
 placasDELL: 3
-cpuDELL: 2
-ramDELL: 4
+cpuDELL: 4
+ramDELL: 2
 fuenteDELL: 2
 tarjetasDELL: 3
-ensambladoresDELL: 1
+ensambladoresDELL: 6
 placasHP: 0
 cpuHP: 0
 ramHP: 0

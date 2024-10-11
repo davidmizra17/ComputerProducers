@@ -5,6 +5,7 @@
 package computerproducers;
 
 import static computerproducers.CPUProducer.store_counter;
+import static computerproducers.RAMProducer.getStore_counter;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,7 +96,7 @@ public class GraphicsCardProducer extends Producer {
                 Thread.sleep(time_sleep);
                 store_counter++;
                 
-                graphicsCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                if(getStore_counter() >= 0)graphicsCounterDisplayer.setText(String.valueOf(getStore_counter()));
                 
                 System.out.println("Graphics Card Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{

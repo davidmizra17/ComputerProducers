@@ -8,6 +8,7 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -22,15 +23,11 @@ public class Assembler extends Thread {
     private static Semaphore mutex;
     
     //COUNTERS
-    private static int standardComputerCounter;
+    public static int standardComputerCounter;
     private static int graphicCardComputerCounter;
     private int salary;
     private int sleep_time;
-    private static int ram_counter;
-    private static int cpu_counter;
-    private static int graphicsCardCounter;
-    private static int plaque_counter;
-    private static int powerSupplyCounter;
+    
     
     //HARDWARE REQUIREMENTS
     private int ram_needed;
@@ -40,7 +37,7 @@ public class Assembler extends Thread {
     private int power_supply_needed;
     
     //Text Fields GUI
-    public JTextField standardComputerCounterDisplayer;
+    public static JTextField standardComputerCounterDisplayer;
 //    private JTextField RAMProduced;
 //    private JTextField CPUProduced;
 //    private JTextField PowerSupplyProduced;
@@ -64,11 +61,7 @@ public class Assembler extends Thread {
         this.sleep_time = sleep_time;
         
         //COUNTERS
-        ram_counter = 0;
-        cpu_counter = 0;
-        graphicsCardCounter = 0;
-        plaque_counter = 0;
-        powerSupplyCounter = 0;
+        
         
         //HARDWARE REQUIREMENTS
         this.ram_needed = ram_needed;
@@ -158,77 +151,93 @@ public class Assembler extends Thread {
     
     public void getRAM() throws InterruptedException{
         
+        if(RAMProducer.getStore_counter() >= ram_needed){
+        
         System.out.println("ASSEMBLER THREAD: " + Thread.currentThread().getName() + " TOOK CONTROL OF RAM");
         
         RAMProducer.getSemaphore().acquire();
         
-//        System.out.println("---------RAM COUNTER BEFORE: " + RAMProducer.store_counter);
-        RAMProducer.setStore_counter(RAMProducer.getStore_counter() - 1);
-        ram_counter++;
-        System.out.println("-------RAM COUNTER FROM ASSEMBLER: " + ram_counter);
-//        System.out.println("---------RAM COUNTER AFTER: " + RAMProducer.store_counter);
+        System.out.println("---------RAM COUNTER BEFORE: " + RAMProducer.store_counter);
+        RAMProducer.setStore_counter(RAMProducer.getStore_counter() - ram_needed);
+//        ram_counter++;
+//        System.out.println("-------RAM COUNTER FROM ASSEMBLER: " + ram_counter);
+        System.out.println("---------RAM COUNTER AFTER: " + RAMProducer.store_counter);
         
         RAMProducer.getSemaphore().release();
+        }
         
     }
     public void getCPU() throws InterruptedException{
+        
+        if(CPUProducer.getStore_counter() >= cpu_needed){
         
         System.out.println("ASSEMBLER THREAD: " + Thread.currentThread().getName() + " TOOK CONTROL OF CPU");
         
         CPUProducer.getSemaphore().acquire();
         
-//        System.out.println("---------CPU COUNTER BEFORE: " + CPUProducer.store_counter);
-        CPUProducer.setStore_counter(CPUProducer.getStore_counter() - 1);
-        cpu_counter++;
-        System.out.println("----------CPU COUNTER FROM ASSEMBLER: " + cpu_counter);
-//        System.out.println("---------CPU COUNTER AFTER: " + CPUProducer.store_counter);
+        System.out.println("---------CPU COUNTER BEFORE: " + CPUProducer.store_counter);
+        CPUProducer.setStore_counter(CPUProducer.getStore_counter() - cpu_needed);
+//        cpu_counter++;
+//        System.out.println("----------CPU COUNTER FROM ASSEMBLER: " + cpu_counter);
+        System.out.println("---------CPU COUNTER AFTER: " + CPUProducer.store_counter);
         
         CPUProducer.getSemaphore().release();
+        }
         
     }
     public void getGraphicsCard() throws InterruptedException{
+        
+        if(GraphicsCardProducer.getStore_counter() >= graphicCardsNeeded){
+            
         
         System.out.println("ASSEMBLER THREAD: " + Thread.currentThread().getName() + " TOOK CONTROL OF GRAPHICS");
         
         GraphicsCardProducer.getSemaphore().acquire();
         
-//        System.out.println("---------GRAPHICS CARD COUNTER BEFORE: " + GraphicsCardProducer.store_counter);
-        GraphicsCardProducer.setStore_counter(GraphicsCardProducer.getStore_counter() - 1);
-        graphicsCardCounter++;
-        System.out.println("----------GRAPHICS COUNTER FROM ASSEMBLER: " + graphicsCardCounter);
-//        System.out.println("---------GRAPHICS CARD COUNTER AFTER: " + GraphicsCardProducer.store_counter);
+        System.out.println("---------GRAPHICS CARD COUNTER BEFORE: " + GraphicsCardProducer.store_counter);
+        GraphicsCardProducer.setStore_counter(GraphicsCardProducer.getStore_counter() - graphicCardsNeeded);
+//        graphicsCardCounter++;
+//        System.out.println("----------GRAPHICS COUNTER FROM ASSEMBLER: " + graphicsCardCounter);
+        System.out.println("---------GRAPHICS CARD COUNTER AFTER: " + GraphicsCardProducer.store_counter);
         
         GraphicsCardProducer.getSemaphore().release();
+        }
         
     }
     public void getPlaques() throws InterruptedException{
+        
+        if(PlaqueProducer.getStore_counter() >= plaques_needed){
         
         System.out.println("ASSEMBLER THREAD: " + Thread.currentThread().getName() + " TOOK CONTROL OF PLAQUE");
         
         PlaqueProducer.getSemaphore().acquire();
         
-//        System.out.println("---------PLAQUE COUNTER BEFORE: " + PlaqueProducer.store_counter);
-        PlaqueProducer.setStore_counter(PlaqueProducer.getStore_counter() - 1);
-        plaque_counter++;
-        System.out.println("----------PLAQUE COUNTER FROM ASSEMBLER: " + plaque_counter);
-//        System.out.println("---------PLAQUE COUNTER AFTER: " + PlaqueProducer.store_counter);
+        System.out.println("---------PLAQUE COUNTER BEFORE: " + PlaqueProducer.store_counter);
+        PlaqueProducer.setStore_counter(PlaqueProducer.getStore_counter() - plaques_needed);
+//        plaque_counter++;
+//        System.out.println("----------PLAQUE COUNTER FROM ASSEMBLER: " + plaque_counter);
+        System.out.println("---------PLAQUE COUNTER AFTER: " + PlaqueProducer.store_counter);
         
         PlaqueProducer.getSemaphore().release();
+        }
         
     }
     public void getPowerSupply() throws InterruptedException{
+        
+        if(PowerSupplyProducer.getStore_counter() >= power_supply_needed){
         
         System.out.println("ASSEMBLER THREAD: " + Thread.currentThread().getName() + " TOOK CONTROL OF PS");
         
         PowerSupplyProducer.getSemaphore().acquire();
         
-//        System.out.println("---------POWER SUPPLY COUNTER BEFORE: " + PowerSupplyProducer.store_counter);
-        PowerSupplyProducer.setStore_counter(PowerSupplyProducer.getStore_counter() - 1);
-        powerSupplyCounter++;
-        System.out.println("----------POWER SUPPLY COUNTER FROM ASSEMBLER: " + powerSupplyCounter);
-//        System.out.println("---------POWER SUPPLY COUNTER AFTER: " + PowerSupplyProducer.store_counter);
+        System.out.println("---------POWER SUPPLY COUNTER BEFORE: " + PowerSupplyProducer.store_counter);
+        PowerSupplyProducer.setStore_counter(PowerSupplyProducer.getStore_counter() - power_supply_needed);
+//        powerSupplyCounter++;
+//        System.out.println("----------POWER SUPPLY COUNTER FROM ASSEMBLER: " + powerSupplyCounter);
+        System.out.println("---------POWER SUPPLY COUNTER AFTER: " + PowerSupplyProducer.store_counter);
         
         RAMProducer.getSemaphore().release();
+        }
         
     }
     
@@ -246,31 +255,36 @@ public class Assembler extends Thread {
         }
         
         
-        return (ram_counter == ram_needed && 
-                cpu_counter == cpu_needed && 
-                graphicsCardCounter == graphicCardsNeeded && 
-                plaque_counter == plaques_needed && 
-                powerSupplyCounter == power_supply_needed ? 1 : 0);
+        return 1;
         
     }
     
-    public int standardComputerAssembly() throws InterruptedException{
+    public synchronized int standardComputerAssembly() throws InterruptedException{
 //        
-//        if(RAMProducer.store_counter >= ram_needed && CPUProducer.store_counter >= cpu_needed && PlaqueProducer.store_counter >= plaques_needed && PowerSupplyProducer.store_counter >= power_supply_needed){
-            
+        if(RAMProducer.store_counter >= ram_needed && CPUProducer.store_counter >= cpu_needed && PlaqueProducer.store_counter >= plaques_needed && PowerSupplyProducer.store_counter >= power_supply_needed){
+//            6, 5, 3, 1, 5, 3, 1
             getRAM();
             getCPU();
             getPlaques();
             getPowerSupply();
-//        }
+        }
         
         
-        return (ram_counter == ram_needed && 
-                cpu_counter == cpu_needed &&                 
-                plaque_counter == plaques_needed && 
-                powerSupplyCounter == power_supply_needed ? 1 : 0);
+        return 1;
         
     }
+    
+    public void incrementStandardComputerCount() throws InterruptedException{
+            
+            mutex.acquire();
+            Thread.sleep(sleep_time);  
+            
+            setStandardComputerCounter(getStandardComputerCounter() + 1);
+            
+            mutex.release();
+       
+    }
+        
     
     public void resetValues(){
         
@@ -282,29 +296,32 @@ public class Assembler extends Thread {
     }
     
     @Override
-    public void run(){
+    
+    
+public void run(){
         while(true){
             
             try {
-                mutex.acquire();
-                Thread.sleep(sleep_time);  
-//                RAMProduced.setText(Integer.toString(ram_counter));
-//                CPUProduced.setText(Integer.toString(cpu_counter));
-//                PowerSupplyProduced.setText(Integer.toString(powerSupplyCounter));
-//                GraphicsCardProduced.setText(Integer.toString(graphicsCardCounter));
-//                PlaquesProduced.setText(Integer.toString(plaque_counter));
                 
-                standardComputerCounter+= standardComputerAssembly();
-//                System.out.println("THIS IS THE STANDARD COMPUTER COUNTER FROM ASSEMBLER CLASS: " + standardComputerCounter);
+                
+//               
+                 standardComputerAssembly();
+                incrementStandardComputerCount();
+                System.out.println("thread with id "+ Thread.currentThread().getName() + " has the current stadard computer count: " + getStandardComputerCounter());
+                Thread.yield();
+                SwingUtilities.invokeLater(() -> {
+                standardComputerCounterDisplayer.setText(String.valueOf(standardComputerCounter));  
+                });
 //                if(standardComputerCounter == STANDARD_COMPUTERS_NEEDED){
 //                    //reset values, assemble computers with graphics cards and start count for regular computers again
 //                    resetValues();
 //                    //ASSEMBLE COMPUTER WITH GRAPHICS CARD
 //                    graphicCardComputerCounter+= graphicsComputerAssembly();
-//                    
+                  
 //            }
-                mutex.release();
-                standardComputerCounterDisplayer.setText(String.valueOf(standardComputerCounter));
+                
+               
+
 
                 System.out.println("Assembler checking for available resources...");
 
@@ -316,5 +333,6 @@ public class Assembler extends Thread {
         }
         
     }
+
     
 }

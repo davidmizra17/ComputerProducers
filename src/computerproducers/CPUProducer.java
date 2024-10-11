@@ -96,7 +96,7 @@ public class CPUProducer extends Producer {
                 Thread.sleep(time_sleep);
                 store_counter++;
                 
-                CPUCounterDisplayer.setText(String.valueOf(getStore_counter()));
+                if(getStore_counter() >= 0)CPUCounterDisplayer.setText(String.valueOf(getStore_counter()));
                 
                 System.out.println("CPU Thread: " + Thread.currentThread().getName() + " incremented counter to: " + store_counter);
             }else{
